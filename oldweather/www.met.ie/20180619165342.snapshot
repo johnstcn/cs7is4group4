@@ -1,0 +1,914 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta id="token" name="token" value="jvyr2Xj3EAHMAyYywDMPU4TMlE2N5LyrLwWmsZYo" />
+    <meta property="og:url" content="https://www.met.ie" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title"  content="    
+    Met Éireann Forecast - The Irish Meteorological Service" />
+    <meta property="og:image"  content="https://d3otjs9x8pq0o3.cloudfront.net/images/OG-icon.jpg" />
+    <meta property="og:description"  content="Met Éireann, the Irish National Meteorological Service, is the leading provider of weather information and related services for Ireland." />
+    <meta name="description" value="Met Éireann, the Irish National Meteorological Service, is the leading provider of weather information and related services for Ireland." />
+    <title>
+            
+    Met Éireann Forecast - The Irish Meteorological Service    </title>
+    <link href="/css/bootstrap.css" rel="stylesheet" />
+    <link href="https://d3otjs9x8pq0o3.cloudfront.net/css/ie10-viewport-bug-workaround.css" rel="stylesheet" />
+    <link href="https://www.met.ie/css/met.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://d3otjs9x8pq0o3.cloudfront.net/css/ol.css" />
+    <link rel="stylesheet" href="https://d3otjs9x8pq0o3.cloudfront.net/css/vue-multiselect.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Condensed:400,700|Roboto:400,400i,700,700i" rel="stylesheet"/>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+    <!--[if lt IE 9]>
+    <script src="https://d3otjs9x8pq0o3.cloudfront.net/js/html5shiv.min.js"></script>
+    <script src="https://d3otjs9x8pq0o3.cloudfront.net/js/respond.min.js"></script>
+
+    <![endif]-->
+    <script>
+        window.Laravel = {"csrfToken":"jvyr2Xj3EAHMAyYywDMPU4TMlE2N5LyrLwWmsZYo"};
+        window.cdnUrl = "https://d3otjs9x8pq0o3.cloudfront.net";
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110168688-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-770930-3');
+    </script>
+    </head>
+
+<body>
+<div id="vue-container">
+    <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+    <!-- HEADER -->
+    <header class="header"> <a name="top" id="top"></a>
+        <nav class="navbar navbar-inverse" role="navigation">
+            <!--Beta Notice-->
+            <div style="background:#000; color:#fff;"><div class="container" style="font-size: 16px; padding: 7px 0px 7px 15px;">To facilitate the transition to our new website our old website is still available here <strong><a href="http://archive.met.ie" target="_blank" style="color:#fff; text-transform:underline;" >archive.met.ie</a></strong>.</div></div>
+            <!--End-->            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="hidden-xs">menu</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                    <a class="navbar-brand" href="https://www.met.ie">Met &Eacute;ireann</a>
+                    <short-weather></short-weather>
+                    <header-warnings></header-warnings>
+                    <form class="navbar-form clearfix" role="search" autocomplete="off" role="presentation" onsubmit="return false">
+                        <div class="form-group">
+                            <label class="sr-only" for="locationsearch">Location setting</label>
+                            <input type="text" placeholder="Enter Location" id="locationsearch" class="form-control" autocomplete="off" >
+                        </div>
+                        <button class="hidden" type="submit"><span class="sr-only hidden">Submit location</span></button>
+                    </form>
+                </div>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <div class="container">
+                    <p class="hidden-xs">The Irish Meteorological Service</p>
+                    <ul class="nav navbar-nav navbar-main">
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Forecasts</a>
+                            <ul class="dropdown-menu"><li class="menu-item-2926">
+    <a target="_self"  href="https://www.met.ie/warnings">
+        <span>
+            Weather Warnings
+        </span>
+    </a></li><li class="menu-item-50">
+    <a target="_self"  href="https://www.met.ie/forecasts/national-forecast">
+        <span>
+            National & Regional Forecasts
+        </span>
+    </a><ul><li class="menu-item-50">
+    <a  href="https://www.met.ie/forecasts/national-forecast">
+        <span>
+            National Forecast
+        </span>
+    </a></li><li class="menu-item-2561">
+    <a  href="https://www.met.ie/forecasts/dublin">
+        <span>
+            Dublin
+        </span>
+    </a></li><li class="menu-item-2337">
+    <a  href="https://www.met.ie/forecasts/ulster">
+        <span>
+            Ulster
+        </span>
+    </a></li><li class="menu-item-2339">
+    <a  href="https://www.met.ie/forecasts/munster">
+        <span>
+            Munster
+        </span>
+    </a></li><li class="menu-item-2341">
+    <a  href="https://www.met.ie/forecasts/leinster">
+        <span>
+            Leinster
+        </span>
+    </a></li><li class="menu-item-2343">
+    <a  href="https://www.met.ie/forecasts/connacht">
+        <span>
+            Connacht
+        </span>
+    </a></li></ul></li><li class="menu-item-2320">
+    <a target="_self"  href="https://www.met.ie/forecasts/marine-inland-lakes/buoys">
+        <span>
+            Marine / Inland Lakes
+        </span>
+    </a><ul><li class="menu-item-3281">
+    <a  href="https://www.met.ie/forecasts/marine-inland-lakes/sea-area-forecast">
+        <span>
+            Sea Area Forecast
+        </span>
+    </a></li><li class="menu-item-2320">
+    <a  href="https://www.met.ie/forecasts/marine-inland-lakes/buoys">
+        <span>
+            Buoys
+        </span>
+    </a></li><li class="menu-item-2321">
+    <a  href="https://www.met.ie/forecasts/marine-inland-lakes/coastal-reports">
+        <span>
+            Coastal Reports
+        </span>
+    </a></li><li class="menu-item-2323">
+    <a  href="https://www.met.ie/forecasts/marine-inland-lakes/inland-lakes">
+        <span>
+            Inland Lakes
+        </span>
+    </a></li><li class="menu-item-2322">
+    <a  href="https://www.met.ie/forecasts/marine-inland-lakes/sea-crossings">
+        <span>
+            Sea Crossings
+        </span>
+    </a></li><li class="menu-item-3307">
+    <a  href="https://www.met.ie/forecasts/marine-inland-lakes/waves">
+        <span>
+            Waves
+        </span>
+    </a></li></ul></li><li class="menu-item-54">
+    <a target="_self"  href="https://www.met.ie/forecasts/farming">
+        <span>
+            Farming
+        </span>
+    </a><ul><li class="menu-item-3679">
+    <a  href="https://www.met.ie/forecasts/farming/graphs">
+        <span>
+            Agricultural Data Graphs
+        </span>
+    </a></li><li class="menu-item-2723">
+    <a  href="https://www.met.ie/forecasts/farming/agricultural-data-report">
+        <span>
+            Agricultural Data Report
+        </span>
+    </a></li></ul></li><li class="menu-item-56">
+    <a target="_self"  href="https://www.met.ie/forecasts/pollen">
+        <span>
+            Pollen
+        </span>
+    </a></li><li class="menu-item-58">
+    <a target="_self"  href="https://www.met.ie/forecasts/meteoalarm">
+        <span>
+            Meteoalarm
+        </span>
+    </a></li><li class="menu-item-60">
+    <a target="_self"  href="https://www.met.ie/forecasts/worldweather">
+        <span>
+            WorldWeather
+        </span>
+    </a></li></ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Latest Reports</a>
+                            <ul class="dropdown-menu"><li class="menu-item-2570">
+    <a target="_self"  href="https://www.met.ie/latest-reports/observations">
+        <span>
+            Current Observations
+        </span>
+    </a></li><li class="menu-item-2572">
+    <a target="_self"  href="https://www.met.ie/latest-reports/observations/yesterday">
+        <span>
+            Yesterday's Weather
+        </span>
+    </a></li><li class="menu-item-2180">
+    <a target="_self"  href="https://www.met.ie/latest-reports/satellites">
+        <span>
+            Satellites
+        </span>
+    </a><ul><li class="menu-item-2184">
+    <a  href="https://www.met.ie/latest-reports/satellites/ireland-infrared">
+        <span>
+            Ireland
+        </span>
+    </a></li><li class="menu-item-2190">
+    <a  href="https://www.met.ie/latest-reports/satellites/europe-infrared">
+        <span>
+            Europe
+        </span>
+    </a></li><li class="menu-item-2196">
+    <a  href="https://www.met.ie/latest-reports/satellites/world-infrared">
+        <span>
+            World
+        </span>
+    </a></li></ul></li><li class="menu-item-2320">
+    <a target="_self"  href="https://www.met.ie/forecasts/marine-inland-lakes/buoys">
+        <span>
+            Buoy Reports
+        </span>
+    </a></li><li class="menu-item-3645">
+    <a target="_self"  href="https://www.met.ie/rainfall-radar">
+        <span>
+            Rainfall Radar
+        </span>
+    </a></li><li class="menu-item-2215">
+    <a target="_self"  href="https://www.met.ie/latest-reports/valentia-tephigram">
+        <span>
+            Valentia Tephigram
+        </span>
+    </a></li><li class="menu-item-2734">
+    <a target="_self"  href="https://www.met.ie/latest-reports/web-cams">
+        <span>
+            Web Cams
+        </span>
+    </a></li></ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Climate</a>
+                            <ul class="dropdown-menu"><li class="menu-item-1960">
+    <a target="_self"  href="https://www.met.ie/climate/weather-extreme-records">
+        <span>
+            Weather Extreme Records for Ireland
+        </span>
+    </a></li><li class="menu-item-1946">
+    <a target="_self"  href="https://www.met.ie/climate/major-weather-events">
+        <span>
+            Major Weather Events
+        </span>
+    </a></li><li class="menu-item-1982">
+    <a target="_self"  href="https://www.met.ie/climate/past-weather-statements">
+        <span>
+            Past Weather Statements
+        </span>
+    </a></li><li class="menu-item-76">
+    <a target="_self"  href="https://www.met.ie/climate/climate-change">
+        <span>
+            Climate Change
+        </span>
+    </a></li><li class="menu-item-72">
+    <a target="_self"  href="https://www.met.ie/climate/services">
+        <span>
+            Services
+        </span>
+    </a></li><li class="menu-item-74">
+    <a target="_self"  href="https://www.met.ie/climate/available-data">
+        <span>
+            Available Data
+        </span>
+    </a><ul><li class="menu-item-2263">
+    <a  href="https://www.met.ie/climate/available-data/daily-data">
+        <span>
+            Daily Data
+        </span>
+    </a></li><li class="menu-item-2739">
+    <a  href="https://www.met.ie/climate/available-data/historical-data">
+        <span>
+            Historical Data
+        </span>
+    </a></li><li class="menu-item-2257">
+    <a  href="https://www.met.ie/climate/available-data/monthly-data">
+        <span>
+            Monthly Data
+        </span>
+    </a></li><li class="menu-item-578">
+    <a  href="https://www.met.ie/climate/available-data/mera">
+        <span>
+            MÉRA
+        </span>
+    </a></li><li class="menu-item-3872">
+    <a  href="https://www.met.ie/climate/available-data/long-term-data-sets">
+        <span>
+            Long Term Data Sets
+        </span>
+    </a></li><li class="menu-item-4867">
+    <a  href="https://www.met.ie/climate/30-year-averages">
+        <span>
+            30 Year Averages
+        </span>
+    </a></li></ul></li><li class="menu-item-66">
+    <a target="_self"  href="https://www.met.ie/climate/what-we-measure">
+        <span>
+            What we measure
+        </span>
+    </a><ul><li class="menu-item-3697">
+    <a  href="https://www.met.ie/climate/weather-observing-stations">
+        <span>
+            Weather Observing Stations
+        </span>
+    </a></li><li class="menu-item-682">
+    <a  href="https://www.met.ie/climate/what-we-measure/temperature">
+        <span>
+            Temperature
+        </span>
+    </a></li><li class="menu-item-617">
+    <a  href="https://www.met.ie/climate/what-we-measure/rainfall">
+        <span>
+            Rainfall
+        </span>
+    </a></li><li class="menu-item-953">
+    <a  href="https://www.met.ie/climate/what-we-measure/lightning">
+        <span>
+            Lightning
+        </span>
+    </a><ul><li class="menu-item-3335">
+    <a  href="https://www.met.ie/climate/what-we-measure/lightning/lightning-archive">
+        <span>
+            Lightning Archive
+        </span>
+    </a></li></ul></li><li class="menu-item-770">
+    <a  href="https://www.met.ie/climate/what-we-measure/sunshine">
+        <span>
+            Sunshine
+        </span>
+    </a></li><li class="menu-item-735">
+    <a  href="https://www.met.ie/climate/what-we-measure/wind">
+        <span>
+            Wind
+        </span>
+    </a></li><li class="menu-item-938">
+    <a  href="https://www.met.ie/climate/what-we-measure/upper-air">
+        <span>
+            Upper Air
+        </span>
+    </a></li><li class="menu-item-927">
+    <a  href="https://www.met.ie/climate/what-we-measure/water-vapour">
+        <span>
+            Water Vapour
+        </span>
+    </a></li></ul></li></ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Education</a>
+                            <ul class="dropdown-menu"><li class="menu-item-80">
+    <a target="_self"  href="https://www.met.ie/education/school-resources">
+        <span>
+            School Resources
+        </span>
+    </a><ul><li class="menu-item-89">
+    <a  href="https://www.met.ie/education/what-is-lightning">
+        <span>
+            What is Lightning?
+        </span>
+    </a></li><li class="menu-item-971">
+    <a  href="https://www.met.ie/education/the-northern-lights">
+        <span>
+            The Northern Lights
+        </span>
+    </a></li></ul></li><li class="menu-item-85">
+    <a target="_self"  href="https://www.met.ie/education/library">
+        <span>
+            Library
+        </span>
+    </a><ul><li class="menu-item-1295">
+    <a  href="https://www.met.ie/education/library/about-the-library">
+        <span>
+            About the Library
+        </span>
+    </a></li><li class="menu-item-1192">
+    <a  href="https://www.met.ie/education/library/special-collections">
+        <span>
+            Special Collections
+        </span>
+    </a></li></ul></li><li class="menu-item-1421">
+    <a target="_self"  href="https://www.met.ie/education/how-met-eireann-produces-a-forecast">
+        <span>
+            How Met Éireann produces a forecast
+        </span>
+    </a></li><li class="menu-item-112">
+    <a target="_self"  href="https://www.met.ie/education/conversions">
+        <span>
+            Conversions
+        </span>
+    </a></li><li class="menu-item-1625">
+    <a target="_self"  href="https://www.met.ie/education/satellite-images-of-ireland">
+        <span>
+            Satellite Images of Ireland
+        </span>
+    </a></li><li class="menu-item-87">
+    <a target="_self"  href="https://www.met.ie/education/publications">
+        <span>
+            Publications
+        </span>
+    </a><ul><li class="menu-item-1329">
+    <a  href="https://www.met.ie/education/publications/met-eireann-publications">
+        <span>
+            Met Éireann publications
+        </span>
+    </a></li><li class="menu-item-1355">
+    <a  href="https://www.met.ie/education/publications/books-published-by-met-eireann">
+        <span>
+            Books published by Met Éireann
+        </span>
+    </a></li><li class="menu-item-1358">
+    <a  href="https://www.met.ie/education/publications/climatological-data-sets">
+        <span>
+            Climatological Data Sets
+        </span>
+    </a></li><li class="menu-item-1361">
+    <a  href="https://www.met.ie/education/publications/technical-notes">
+        <span>
+            Technical Notes
+        </span>
+    </a></li><li class="menu-item-1367">
+    <a  href="https://www.met.ie/education/publications/climatological-notes">
+        <span>
+            Climatological Notes
+        </span>
+    </a></li><li class="menu-item-1369">
+    <a  href="https://www.met.ie/education/publications/historical-notes">
+        <span>
+            Historical Notes
+        </span>
+    </a></li><li class="menu-item-1371">
+    <a  href="https://www.met.ie/education/publications/climate-change-research-reports">
+        <span>
+            Climate Change Research Reports
+        </span>
+    </a></li><li class="menu-item-1263">
+    <a  href="https://www.met.ie/education/publications/agrometeorological-bulletins">
+        <span>
+            Agrometeorological Bulletins
+        </span>
+    </a></li></ul></li></ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Science</a>
+                            <ul class="dropdown-menu"><li class="menu-item-104">
+    <a target="_self"  href="https://www.met.ie/science/agricultural-meteorology">
+        <span>
+            Agricultural Meteorology
+        </span>
+    </a></li><li class="menu-item-1913">
+    <a target="_self"  href="https://www.met.ie/science/climate-modelling">
+        <span>
+            Climate Modelling
+        </span>
+    </a></li><li class="menu-item-5019">
+    <a target="_self"  href="https://www.met.ie/events">
+        <span>
+            Events
+        </span>
+    </a><ul><li class="menu-item-4889">
+    <a  href="https://www.met.ie/mera-workshop">
+        <span>
+            MÉRA Workshop
+        </span>
+    </a></li></ul></li><li class="menu-item-97">
+    <a target="_self"  href="https://www.met.ie/science/forecasting-centre">
+        <span>
+            Forecasting Centre
+        </span>
+    </a><ul><li class="menu-item-1515">
+    <a  href="https://www.met.ie/science/forecasting-centre/television-weather-bulletins">
+        <span>
+            Television Weather Bulletins
+        </span>
+    </a></li></ul></li><li class="menu-item-110">
+    <a target="_self"  href="https://www.met.ie/science/laboratory">
+        <span>
+            Laboratory
+        </span>
+    </a></li><li class="menu-item-1677">
+    <a target="_self"  href="https://www.met.ie/science/links-to-other-institutes">
+        <span>
+            Links to other Institutes
+        </span>
+    </a></li><li class="menu-item-108">
+    <a target="_self"  href="https://www.met.ie/science/marine-meteorology">
+        <span>
+            Marine Meteorology
+        </span>
+    </a></li><li class="menu-item-28">
+    <a target="_self"  href="https://www.met.ie/science/numerical-weather-prediction">
+        <span>
+            Numerical Weather Prediction
+        </span>
+    </a><ul><li class="menu-item-1400">
+    <a  href="https://www.met.ie/science/numerical-weather-prediction/operational-nwp-in-met-eireann">
+        <span>
+            Operational NWP
+        </span>
+    </a></li></ul></li><li class="menu-item-1539">
+    <a target="_self"  href="https://www.met.ie/science/valentia">
+        <span>
+            Valentia Observatory
+        </span>
+    </a><ul><li class="menu-item-1545">
+    <a  href="https://www.met.ie/science/valentia/aerosol-optical-depth-measurement">
+        <span>
+            Aerosol Optical Depth
+        </span>
+    </a></li><li class="menu-item-1548">
+    <a  href="https://www.met.ie/science/valentia/environmental-monitoring-air-and-rain-pollution">
+        <span>
+            Air and Rain Pollution
+        </span>
+    </a></li><li class="menu-item-1555">
+    <a  href="https://www.met.ie/science/valentia/geomagnetism">
+        <span>
+            Geomagnetism
+        </span>
+    </a></li><li class="menu-item-1569">
+    <a  href="https://www.met.ie/science/valentia/lightning-detection">
+        <span>
+            Lightning Detection
+        </span>
+    </a></li><li class="menu-item-1579">
+    <a  href="https://www.met.ie/science/valentia/ozone-monitoring">
+        <span>
+            Ozone monitoring
+        </span>
+    </a></li><li class="menu-item-1588">
+    <a  href="https://www.met.ie/science/valentia/phenology">
+        <span>
+            Phenology
+        </span>
+    </a></li><li class="menu-item-1599">
+    <a  href="https://www.met.ie/science/valentia/seismology">
+        <span>
+            Seismology
+        </span>
+    </a></li><li class="menu-item-1608">
+    <a  href="https://www.met.ie/science/valentia/solar-radiation">
+        <span>
+            Solar Radiation
+        </span>
+    </a></li></ul></li><li class="menu-item-99">
+    <a target="_self"  href="https://www.met.ie/science/verification">
+        <span>
+            Verification
+        </span>
+    </a></li></ul>
+                        </li>
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About</a>
+                            <ul class="dropdown-menu"><li class="menu-item-33">
+    <a target="_self"  href="https://www.met.ie/about-us/strategy">
+        <span>
+            Strategy
+        </span>
+    </a><ul><li class="menu-item-4160">
+    <a  href="https://www.met.ie/about-us/strategy/mission-statement">
+        <span>
+            Mission Statement
+        </span>
+    </a></li></ul></li><li class="menu-item-275">
+    <a target="_self"  href="https://www.met.ie/about-us/met-eireanns-structure">
+        <span>
+            Met Éireann's Structure
+        </span>
+    </a></li><li class="menu-item-142">
+    <a target="_self"  href="https://www.met.ie/about-us/our-history">
+        <span>
+            Our History
+        </span>
+    </a><ul><li class="menu-item-164">
+    <a  href="https://www.met.ie/about-us/our-history/valentia-observatory">
+        <span>
+            Valentia Observatory
+        </span>
+    </a></li><li class="menu-item-160">
+    <a  href="https://www.met.ie/about-us/our-history/airports">
+        <span>
+            Airports
+        </span>
+    </a></li></ul></li><li class="menu-item-304">
+    <a target="_self"  href="https://www.met.ie/about-us/specialised-services">
+        <span>
+            Specialised Services
+        </span>
+    </a><ul><li class="menu-item-307">
+    <a  href="https://www.met.ie/about-us/specialised-services/agricultural-services">
+        <span>
+            Agricultural Services
+        </span>
+    </a></li><li class="menu-item-317">
+    <a  href="https://www.met.ie/about-us/specialised-services/environmental-services">
+        <span>
+            Environmental Services
+        </span>
+    </a></li><li class="menu-item-321">
+    <a  href="https://www.met.ie/about-us/specialised-services/aviation-services">
+        <span>
+            Aviation Services Division
+        </span>
+    </a></li><li class="menu-item-328">
+    <a  href="https://www.met.ie/about-us/specialised-services/commercial-services">
+        <span>
+            Commercial Services
+        </span>
+    </a></li></ul></li><li class="menu-item-485">
+    <a target="_self"  href="https://www.met.ie/about-us/contact-us">
+        <span>
+            Contact Us
+        </span>
+    </a></li><li class="menu-item-394">
+    <a target="_self"  href="https://www.met.ie/about-us/faq">
+        <span>
+            FAQ
+        </span>
+    </a></li><li class="menu-item-82">
+    <a target="_self"  href="https://www.met.ie/about-us/latest-news">
+        <span>
+            Latest News
+        </span>
+    </a></li><li class="menu-item-481">
+    <a target="_self"  href="https://www.met.ie/about-us/vacancies">
+        <span>
+            Vacancies
+        </span>
+    </a></li><li class="menu-item-4864">
+    <a target="_blank"  href="http://www.housing.gov.ie/node/6821">
+        <span>
+            Your Privacy
+        </span>
+    </a></li></ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- /.header -->
+    <!-- CONTENT -->
+        <script>
+        window.className = "Home";
+    </script>
+    <homepage-warnings></homepage-warnings>
+    <div id="content" tabindex="-1">
+            <div>
+        <section id="Homepage-Map" class="container">
+            <div class="hp_title_wrapper my-5 hidden">
+                <div class="hp_title">
+            <span>
+                <h2>Forecasts</h2>
+            </span>
+                </div>
+            </div>
+			<div class="row">
+                <div class="col-md-9">
+                    <div class="map">
+                        <ol-map><div class="mapsize loadani"></div></ol-map>
+                        <days-slider :jsondata="mapJsonData" ></days-slider>
+                    </div>
+                    <map-legend></map-legend>
+                </div>
+                <div class="col-md-3">
+                    <map-types><div class="nav-map loadani" style="height:300px;"></div></map-types>
+                    <recent-locations></recent-locations>
+
+                </div>
+            </div>
+        </section>
+        <a name="forecasts"></a>
+        <midday-outlook>
+            <section id="7DayOutlook" class="container mb-5">
+                <div class="hp_title_wrapper my-5">
+                    <div class="hp_title">
+                <span>
+                      <h2>Dublin Outlook</h2>
+                </span>
+                    </div>
+                </div>
+            </section>
+        </midday-outlook>
+        <twentyfour-hour-forecast>
+            <section id="24HourForecast" class="container hourly-forecast mb-5">
+                <div class="hp_title_wrapper my-5">
+                    <div class="hp_title">
+            <span>
+                <h2>24 Hour Forecast &nbsp;</h2>
+            </span>
+                    </div>
+                </div>
+            </section>
+        </twentyfour-hour-forecast>
+        <section id="NationalRegionalForecasts" class="container mb-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="hp_title_wrapper my-5">
+                        <div class="hp_title">
+                    <span>
+                        <h2>National Forecast</h2>
+                    </span>
+                        </div>
+                    </div>
+                    <p class="date">19 June 2018 16:20</p>
+                    <h4><strong>Today</strong></h4>
+<p>Some persistent and locally heavy rain at times over Connacht and Ulster this evening but elsewhere it will be drier with just some scattered patches of drizzle, mist and fog. Becoming blustery in most places in a freshening Southwesterly wind.</p>
+
+    <h4><strong>Tonight</strong></h4>
+<p>Generally cloudy and misty for much of tonight, with patches of rain, drizzle and fog becoming more widespread. Drier, clearer weather will extend from the northwest later in the night, but southern and eastern areas are likely to stay cloudy and damp. Lowest temperatures of 9 to 13 C, North to South, with the blustery Southwest winds veering Northwest and moderating later.</p>
+
+    <h4><strong>Tomorrow</strong></h4>
+    <p>Tomorrow, any overnight drizzle in the Southeast will soon clear in the morning.  Then it will be a bright, fresh day, with a mix of sunny spells and cloudy periods. Most places dry but there will be a few showers on northern coasts, moving to some inland parts of the North later in the day.  A fresh day with top afternoon temperatures of 15 to 18 C, in moderate northwest breezes, increasing blustery along Northern coasts..</p>
+                    <div class="text-center text-md-left"><a href="https://www.met.ie/forecasts/national-forecast" title="View Full Forecast" class="btn mt-5">View Full Forecast</a></div>
+                </div>
+                <regional-forecast>
+                    <div class="col-md-6">
+                        <div class="hp_title_wrapper my-5">
+                            <div class="hp_title"><span><h2>Regional Forecast</h2></span></div>
+                        </div>
+                    </div>
+                </regional-forecast>
+            </div>
+        </section>
+
+        <section id="News-Twitter" class="container mb-5">
+            <div class="row">
+                <div class="col-md-9 news">
+                    <div class="hp_title_line_padding">
+                        <div class="hp_title_wrapper my-5">
+                            <div class="hp_title_line">
+                                <span><h2>MET News</h2></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                                                    <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-xs-4 col-sm-12">
+                                        <p><a href="https://www.met.ie/met-eireann-is-recruiting-2"><img src="https://www.met.ie/cms/assets/uploads/2018/05/met-logo-2-264x116.jpg" class="img-responsive"></a></p>
+                                    </div>
+                                    <div class="col-xs-8 col-sm-12">
+                                        <p class="date">23 May 2018</p>
+                                        <h3><a href="https://www.met.ie/met-eireann-is-recruiting-2">Met Éireann is recruiting</a></h3>
+                                        <p class="excerpt">Met Éireann is looking to recruit meteorologists ... <a href="https://www.met.ie/met-eireann-is-recruiting-2">more</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-xs-4 col-sm-12">
+                                        <p><a href="https://www.met.ie/first-mera-reanalysis-workshop"><img src="https://www.met.ie/cms/assets/uploads/2018/05/20180517_183331-264x264.jpg" class="img-responsive"></a></p>
+                                    </div>
+                                    <div class="col-xs-8 col-sm-12">
+                                        <p class="date">18 May 2018</p>
+                                        <h3><a href="https://www.met.ie/first-mera-reanalysis-workshop">First MÉRA Reanalysis Workshop - presentation slides available</a></h3>
+                                        <p class="excerpt">Over the past few years researchers at Met Éirean... <a href="https://www.met.ie/first-mera-reanalysis-workshop">more</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-xs-4 col-sm-12">
+                                        <p><a href="https://www.met.ie/ims-annual-field-trip-2018"><img src="https://www.met.ie/cms/assets/uploads/2018/05/MetSoc-264x264.jpg" class="img-responsive"></a></p>
+                                    </div>
+                                    <div class="col-xs-8 col-sm-12">
+                                        <p class="date">14 May 2018</p>
+                                        <h3><a href="https://www.met.ie/ims-annual-field-trip-2018">IMS Annual Field Trip 2018</a></h3>
+                                        <p class="excerpt">The Irish Meteorological Society (IMS) in conjunct... <a href="https://www.met.ie/ims-annual-field-trip-2018">more</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+                <div class="col-md-3 twitter">
+                    <div class=" hp_title_line_padding">
+                        <div class="hp_title_wrapper my-5">
+                            <div class="hp_title_line">
+                                <span><h2>Twitter</h2></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="twitter-spacer">
+                        <a class="twitter-timeline" data-height="400" href="https://twitter.com/MetEireann">Tweets by MetEireann</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="Highlighted-Links" class="container">
+            <ul class="homepage-highlights pl-0">
+                <li>
+                    <a href="https://www.met.ie/science/agricultural-meteorology" class="d-block">
+                        <h3 class="text-uppercase">Agriculture</h3>
+                        <div class="icon-wrap p-5"><img src="/images/icon-agriculture@2x.png" class="img-responsive"></div>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.met.ie/forecasts/marine-inland-lakes">
+                        <h3 class="text-uppercase">Marine</h3>
+                        <div class="icon-wrap p-5"><img src="/images/icon-marine@2x.png" class="img-responsive"></div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/climate/available-data/monthly-data">
+                        <h3 class="text-uppercase">Monthly Reports</h3>
+                        <div class="icon-wrap p-5"><img src="/images/icon-monthly-reports@2x.png" class="img-responsive"></div>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.met.ie/education/publications">
+                        <h3 class="text-uppercase">Publications</h3>
+                        <div class="icon-wrap p-5"><img src="/images/icon-publications@2x.png" class="img-responsive"></div>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.safetyonthewater.ie">
+                        <h3 class="text-uppercase">Water Safety</h3>
+                        <div class="icon-wrap p-5"><img src="/images/icon-water-safety@2x.png" class="img-responsive"></div>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </div>
+    </div>
+    <!-- /.content -->
+
+
+    <!-- BREACRUMB -->
+    <div class="container">
+        <p class="sr-only">You are here:</p>
+        
+    </div>
+    <!-- /.breadcrumb -->
+
+    <!-- FOOTER -->
+    <footer>
+        <div id="cookie_directive_container" class="container" style="display: none">
+            <nav class="navbar navbar-default navbar-fixed-bottom">
+
+                <div class="container">
+                    <div class="navbar-inner navbar-content-center" id="cookie_accept">
+
+                        <a href="#" class="btn btn-default pull-right">Close</a>
+                        <p class="text-muted credit">
+                            By using our website you are consenting to our use of cookies in accordance with
+                            our <a href="http://www.housing.gov.ie/corporate/compliance/cookies" target="_blank">privacy statement</a>.
+                        </p>
+                    </div>
+                </div>
+
+            </nav>
+        </div>
+        <div class="container">
+            <p class="backtotop"><a href="#top" title="Back to top">Back to top of page</a></p>
+            <ul>
+                <li><a href="/ga/">As Gaeilge</a></li>
+                <li><a href="https://www.met.ie/about-us/contact-us">Contact</a></li>
+                <li><a href="http://www.housing.gov.ie/corporate/compliance/cookies" target="_blank" >Privacy</a></li>
+                <li><a href="https://www.met.ie/about-us/faq">FAQ</a></li>
+                <li><a href="https://www.met.ie/about-us/copyright-notice">Copyright Notice</a></li>
+                <li class="nav-social icon-fb"><a target="_blank" href="https://www.facebook.com/Met-%C3%89ireann-123518233000/">Facebook</a></li>
+                <li class="nav-social icon-tw"><a target="_blank" href="https://twitter.com/MetEireann">Twitter</a></li>
+            </ul>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <a href="/">
+                        <img src="https://d3otjs9x8pq0o3.cloudfront.net/images/met-eireann-long.png" class="pull-left">
+                    </a>
+                    <p>MET ÉIREANN, Glasnevin Hill, Dublin 9, D09 Y921, Ireland <br>
+                        Tel: +353-1-8064200 Fax: +353-1-8064247</p>
+                    <p>&copy; The material on this site is Met Éireann copyright <br>
+                        The name Met Éireann and the Met Éireann logo are registered trademarks.<br>
+                        Times indicated in forecasts and reports may be local or UTC.</p>
+                    <p class="print-hide"><a href="https://itunes.apple.com/ie/app/met-éireann-weather-ireland/id592109880" target="_blank"><img src="/images/apple-store.png"></a> <a href="https://play.google.com/store/apps/details?id=net.fusio.meteireann&amp;hl=en_IE" target="_blank"><img src="/images/google-play.png"></a></p>
+                </div>
+                <div class="col-md-4">
+                    <p><a href="http://www.housing.gov.ie/housing/housing"><img src="https://d3otjs9x8pq0o3.cloudfront.net/images/department-of-housing.png" alt="Department of Housing"></a><a href="/forecasts/worldweather"><img src="https://d3otjs9x8pq0o3.cloudfront.net/images/wwis.png" alt="World Weather Information Service"></a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://d3otjs9x8pq0o3.cloudfront.net/js/parsley.min.js"></script>
+<script src="https://d3otjs9x8pq0o3.cloudfront.net/js/typeahead.js"></script>
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+<script src="https://d3otjs9x8pq0o3.cloudfront.net/js/openlayers.js"></script>
+<script src="/js/app-min.js"></script>
+<script src="https://d3otjs9x8pq0o3.cloudfront.net/js/bootstrap.min.js"></script>
+<script>
+    jQuery('.carousel').carousel({ interval: false });
+
+    (function(){
+        $('.carousel-showmanymoveone .item').each(function(){
+            var itemToClone = $(this);
+
+            for (var i=1;i<3;i++) {
+                itemToClone = itemToClone.next();
+
+                // wrap around if at end of item collection
+                if (!itemToClone.length) {
+                    itemToClone = $(this).siblings(':first');
+                }
+
+                // grab item, clone, add marker class, add to collection
+                itemToClone.children(':first-child').clone()
+                    .addClass("cloneditem-"+(i))
+                    .appendTo($(this));
+            }
+        });
+    }());
+</script>
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="https://d3otjs9x8pq0o3.cloudfront.net/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>

@@ -1,4 +1,11 @@
-\documentclass[manuscript]{clv3}
+\documentclass[a4paper,10pt]{article}
+\usepackage{url}
+\usepackage[utf8]{inputenc}
+\usepackage[backend=biber,autocite=footnote,notetype=foot+end,style=authortitle-ibid]{biblatex}
+\bibliography{group4.bib}
+
+\begin{document}
+
 \title{Sentiment Analysis of Twitter Data based on Implicit Categories in Textual Weather Data}
 \author{Cian Johnston}
 \author{Aishwarya Ravindran}
@@ -6,16 +13,37 @@
 \author{Sameer Karode}
 \author{Shravani Deepak Kulkarni}
 
-\begin{document}
 \maketitle
 \section{Introduction}
 
+Sentimental mining is a critical and essential area because sentiment fundamentally relates to a person’s emotions, impression and attitude. Analysing every individual’s sentiments from a text analytics point of view accurately is challenging. We are basically trying to comprehend the thoughts and assumptions of an individual regarding a concept or topic with some context be it positive, negative or neutral \footfullcite{aylien_sentiment}. It is estimated that nearly 2.5 quintillion bytes of data is generated each day \footfullcite{blazon_howmuchdata} and there is a plethora of information relating to a person’s messages, tweets, documents, emails, chats, conversations and comments available. Sentiment analysis aids us in analysing this huge amount of data efficiently.
+
+In this paper, we focus on performing sentiment analysis on the weather based on data retrieved from Twitter \footfullcite{mining_twitter_data}. Twitter, being an acclaimed stage for social networking possess and people to express their interests and thoughts has plenty of information from posts known as “tweets”. With over 500 million tweets per day pertaining to almost anything, it is an excellent platform due to its accessibility and real-time analysis of the data which is crucial for sentiment analysis. It is not uncommon that weather plays an important role in an individual’s mood and its consequences because of the decisions made. [I need some help in writing what exactly we plan to do with the weather data… for instance determine if the person is happy or not by performing sentiment analysis on tweets regarding weather? Basically, we need to write something that sets us apart from all the previous work done using these 3 even if its simple (sentiment analysis, twitter data and weather)] 
+
+In its preliminary stage, we [need to write what we have done so far].
+
 \section{Related Work}
+
+As the accessibility to real-time information or otherwise is increasing, performing analysis on this data is also becoming viable. There has been a lot of notable research done on sentiment analysis of twitter data in general and studies emphasizing on correlating weather with people’s mood and sentiments from Twitter data by measuring temperature, humidity and atmospheric pressure \footfullcite{park2013mood}. These weather variables seem to have a satisfactory impact on one’s mood. Another paper \footfullcite{bagheri2017sentiment} focuses on implementing sentiment analysis on Twitter data using the Twitter API’s and a wealth of available libraries. Twitter is known for having small texts and abbreviations used by people in their posts or tweets making it challenging to extract polarity of the texts and hence researchers resort to utilizing deep learning and machine learning techniques.
+Researchers have performed sentiment analysis for various reasons and different areas like elections, politics, movie ratings and fashion to name a few. In 2015, there was a noteworthy research done in the vision of predicting future crime on each area of a major city, Chicago, Illinois of the United States using GPS tagged twitter data \footfullcite{chen2015crime}. They aimed to predict the time and location during which a specific type of crime is expected to occur by applying lexicon-based sentiment analysis on categorized weather data combined with kernel density estimation of historical crime incidents and were successful. Hannak et al. \footfullcite{hannak2012tweetin} concentrate on using a Twitter specific sentiment extraction methodology and explore a corpus of over 1.5 billion tweets. With the help of machine learning techniques on Twitter corpus correlated with the weather at a particular time and location of the tweets, it was concluded that aggregate sentiment follows different climate and seasonal patterns.
 
 \section{Methodology}
 
+\subsection{Twitter Data}
+
+Cian to fill this in.
+
+\subsection{Weather Data}
+
+The historical weather data was collected from Met Eireann, the Irish National Meteorological Service which is the leading provider of weather and information related services for Ireland \footfullcite{metie}. Additionally, wayback machine scraper \footfullcite{github_sangaline_wayback-machine-scraper} is a utility to interface with the Internet Archive's Wayback Machine \footfullcite{wayback_machine}, a resource for accessing previously published versions of websites. We utilised it to download all the saved snapshots from the Met Eireann website for the year of 2018. Boards.ie is a discussion board with a wide range of forums which includes weather. A registered users’ daily forecasts weather forum \footfullcite{boards_ie_mt_cranium_forecasts} was utilised as another additional source of data by exporting the print versions of pages spanning the year 2018.
+
+
 \section{Results}
 
+Results go here.
+
 \section{Conclusion}
-this is a document
+
+Conclusion goes here.
+
 \end{document}

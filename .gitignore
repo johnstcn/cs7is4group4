@@ -11,3 +11,5 @@
 .vscode
 ./twittermunger/twittermunger
 .venv
+*.bcf
+*.run.xml

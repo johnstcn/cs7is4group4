@@ -10,3 +10,4 @@
 *.qry
 .vscode
 ./twittermunger/twittermunger
+.venv

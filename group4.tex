@@ -37,11 +37,27 @@ Researchers have performed sentiment analysis for various reasons and different 
 
 \subsection{Twitter Data}
 
-Cian to fill this in.
+Twitter provides an API for developers to both read data and interact with users. This has a number of limitations, including rate limits \footfullcite{twitter_api_docs_rate_limit}, and a requirement to request an API key. In order to access a useful volume of data, this would require a large number of HTTP requests to Twitter. Thankfully, the Internet Archive provides a large dataset of posts on Twitter for the year of 2018 in TAR format \footfullcite{archiveorg_twitter}. While these datasets are essentially a subset of the \textit{global} content of Twitter, and technically much larger than required, they are hosted using BitTorrent and are thus much more straightforward to download. For the purposes of this paper, we elected to use a subset of the Twitter archive data from the year 2018.
+
+In any case, these large archives need to be preprocessed before any meaningful analysis can be performed. To this end, a small program was written to consume the entire TAR archive and filter out Tweets matching certain criteria, serializing a subset of the data to CSV format. This was done to avoid extracting the entire archive to disk, which is a time-consuming operation. The following criteria were used for extracting Tweets of interest:
+\begin{itemize}
+    \item{
+        Having geo-location information within Ireland, or
+    }
+    \item{
+        Posted by a user with user-specified location containing the string \textit{Ireland}.
+    }
+\end{itemize}
+
+Note that not all Tweets posted by users in Ireland will necessarily have geo-location information attached, and not all Tweets posted by users claiming to be located within Ireland are necessarily so.
 
 \subsection{Weather Data}
 
-The historical weather data was collected from Met Eireann, the Irish National Meteorological Service which is the leading provider of weather and information related services for Ireland \footfullcite{metie}. Additionally, wayback machine scraper \footfullcite{github_sangaline_wayback-machine-scraper} is a utility to interface with the Internet Archive's Wayback Machine \footfullcite{wayback_machine}, a resource for accessing previously published versions of websites. We utilised it to download all the saved snapshots from the Met Eireann website for the year of 2018. Boards.ie is a discussion board with a wide range of forums which includes weather. A registered users’ daily forecasts weather forum \footfullcite{boards_ie_mt_cranium_forecasts} was utilised as another additional source of data by exporting the print versions of pages spanning the year 2018.
+Some historical weather data was collected from MET \'{E}ireann, the Irish National Meteorological Service. \footfullcite{metie}. Unfortunately, historical textual weather forecast data is not available from MET \'{E}ireann; to work around this, we used the Internet Achive's Wayback Machine \footfullcite{wayback_machine} to access previously published versions of the MET \'{E}ireann homepage which contains daily textual forecast data.
+
+To access previously versions of the website more conveniently, the tool \texttt{wayback-machine-scraper} was utilised \footfullcite{github_sangaline_wayback-machine-scraper}. This is a command-line utility that interfaces with \textit{Wayback Machine} and allows a user to download a number of snapshots of a website for a specified date range. For the purposes of this paper, we fetched all the saved snapshots of the MET \'{E}ireann homepage for the year of 2018. Note that this is a sparse dataset, and snapshots of this data is not available for every day.
+
+As an alternative source of textual forecast data, we turned to a more unothodox source -- Boards.ie is a discussion board with a wide range of fora which, naturally, includes the topic of weather. One particular thread of interest on this sub-forum has almost daily forecasts provided by an amateur meterologist with the moniker 'M.T. Cranium' \footfullcite{boards_ie_mt_cranium_forecasts}. The relevant print versions of the thread spanning the year of 2018 were saved, and the relevant daily forecasts were extracted using a Python script. 
 
 
 \section{Results}

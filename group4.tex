@@ -55,6 +55,23 @@ The large archives detailed above needed to be preprocessed before any meaningfu
 
 Note that not all Tweets posted by users in Ireland will necessarily have geo-location information attached, and not all Tweets posted by users claiming to be located within Ireland are necessarily so.
 
+\subsubsection{Data Cleaning}
+
+The tweets are 140 characters long. Considering this constraint, initial analysis from the chunk of tweets revealed that, users tend to use more contractions and emojis to express their thoughts rather than using appropriate grammar. The sentiment score given by the existing implementations like TextBlob is affected by the use of such text. We implemented a python code to do the preprocessing of the data obtained, which is obtained using Twitter API. The filtering process removes the URL’s, usernames, and hashtags. In some situations, it is known that hashtags can provide instant insight as to what the users are feeling. However, most hashtags that we encountered contain meaningless text or sentences for tags instead of keywords.
+
+\begin{itemize}
+	\item{
+		We removed hashtags, retweets, @mentions, hyperlinks and special characters using regular expressions.
+	}
+	\item{
+		Next, we replaced all the contractions in the tweets to its original forms. We used a dictionary of all the contractions with its original form and replaced them in the text.
+	}
+	\item{
+		Lastly, we translated all the emojis/smileys to texts. For the smileys using special characters, we used the same approach as in the previous step (a dictionary containing the smileys and their corresponding meaning). We utilized the emoji library available in python for this conversion.
+	}
+\end{itemize}
+
+
 \subsection{Weather Data}
 
 \subsubsection{Data Collection}

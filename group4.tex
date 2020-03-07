@@ -1,5 +1,6 @@
 \documentclass[a4paper,10pt]{article}
 \usepackage{url}
+\usepackage{graphicx}
 \usepackage[utf8]{inputenc}
 \usepackage[backend=biber,autocite=footnote,notetype=foot+end,style=authortitle-ibid]{biblatex}
 \bibliography{group4.bib}
@@ -57,7 +58,9 @@ Note that not all Tweets posted by users in Ireland will necessarily have geo-lo
 
 \subsubsection{Data Cleaning}
 
-The tweets are 140 characters long. Considering this constraint, initial analysis from the chunk of tweets revealed that, users tend to use more contractions and emojis to express their thoughts rather than using appropriate grammar. The sentiment score given by the existing implementations like TextBlob is affected by the use of such text. We implemented a python code to do the preprocessing of the data obtained, which is obtained using Twitter API. The filtering process removes the URL’s, usernames, and hashtags. In some situations, it is known that hashtags can provide instant insight as to what the users are feeling. However, most hashtags that we encountered contain meaningless text or sentences for tags instead of keywords.
+The tweets are 140 characters long. Considering this constraint, initial analysis from the chunk of tweets revealed that, users tend to use more contractions and emojis to express their thoughts rather than using appropriate grammar. The sentiment score given by the existing implementations like TextBlob is affected by the use of such text. We implemented a python code to do the preprocessing of the data obtained, which is obtained using Twitter API. 
+
+The filtering process removes the URLs, usernames, and hashtags. In some situations, it is known that hashtags can provide instant insight as to what the users are feeling. However, most hashtags that we encountered contain meaningless text or sentences for tags instead of keywords. The process flow is illustrated in Figure \ref{fig:twitter_process_flow}.
 
 \begin{itemize}
 	\item{
@@ -71,6 +74,12 @@ The tweets are 140 characters long. Considering this constraint, initial analysi
 	}
 \end{itemize}
 
+\begin{figure}
+    \includegraphics[width=0.8\textwidth]{twitter_process_flow.jpeg}
+    \caption{Twitter data process flow.}
+    \label{fig:twitter_process_flow}
+\end{figure}
+
 
 \subsection{Weather Data}
 
@@ -80,7 +89,14 @@ Some historical weather data was collected from MET \'{E}ireann, the Irish Natio
 
 To access previously versions of the website more conveniently, the tool \texttt{wayback-machine-scraper} was utilised \footfullcite{github_sangaline_wayback-machine-scraper}. This is a command-line utility that interfaces with \textit{Wayback Machine} and allows a user to download a number of snapshots of a website for a specified date range. For the purposes of this paper, we fetched all the saved snapshots of the MET \'{E}ireann homepage for the year of 2018. Note that this is a sparse dataset, and snapshots of this data is not available for every day.
 
-As an alternative source of textual forecast data, we turned to a more unothodox source -- Boards.ie is a discussion board with a wide range of fora which, naturally, includes the topic of weather. One particular thread of interest on this sub-forum has almost daily forecasts provided by an amateur meterologist with the moniker 'M.T. Cranium' \footfullcite{boards_ie_mt_cranium_forecasts}. The relevant print versions of the thread spanning the year of 2018 were saved, and the relevant daily forecasts were extracted using a Python script. 
+As an alternative source of textual forecast data, we turned to a more unothodox source -- Boards.ie is a discussion board with a wide range of fora which, naturally, includes the topic of weather. One particular thread of interest on this sub-forum has almost daily forecasts provided by an amateur meterologist with the moniker 'M.T. Cranium' \footfullcite{boards_ie_mt_cranium_forecasts}. The relevant print versions of the thread spanning the year of 2018 were saved, and the relevant daily forecasts were extracted using a Python script. The process is illustrated below in Figure \ref{fig:weather_process_flow}.
+
+\begin{figure}
+    \includegraphics[width=0.8\textwidth]{weather_process_flow.jpeg}
+    \caption{Weather data process flow.}
+    \label{fig:weather_process_flow}
+\end{figure}
+
 
 \subsubsection{Data Processing}
 

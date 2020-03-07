@@ -25,13 +25,15 @@
 
     Sentimental mining is a critical and essential area because sentiment fundamentally relates to a person’s emotions, impression and attitude. Analysing every individual’s sentiments from a text analytics point of view accurately is challenging. We are basically trying to comprehend the thoughts and assumptions of an individual regarding a concept or topic with some context be it positive, negative or neutral \footfullcite{aylien_sentiment}. It is estimated that nearly 2.5 quintillion bytes of data is generated each day \footfullcite{blazon_howmuchdata} and there is a plethora of information relating to a person’s messages, tweets, documents, emails, chats, conversations and comments available. Sentiment analysis aids us in analysing this huge amount of data efficiently.
 
-    In this paper, we focus on performing sentiment analysis on the weather based on data retrieved from Twitter \footfullcite{mining_twitter_data}. Twitter, being an acclaimed stage for social networking possess and people to express their interests and thoughts has plenty of information from posts known as “tweets”. With over 500 million tweets per day pertaining to almost anything, it is an excellent platform due to its accessibility and real-time analysis of the data which is crucial for sentiment analysis. It is not uncommon that weather plays an important role in an individual’s mood and its consequences because of the decisions made. [I need some help in writing what exactly we plan to do with the weather data… for instance determine if the person is happy or not by performing sentiment analysis on tweets regarding weather? Basically, we need to write something that sets us apart from all the previous work done using these 3 even if its simple (sentiment analysis, twitter data and weather)]
+    In this paper, we focus on performing sentiment analysis on the weather based on data retrieved from Twitter \footfullcite{mining_twitter_data}. Twitter, being an acclaimed stage for social networking possess and people to express their interests and thoughts has plenty of information from posts known as “tweets”. With over 500 million tweets per day pertaining to almost anything, it is an excellent platform due to its accessibility and real-time analysis of the data which is crucial for sentiment analysis. It is not uncommon that weather plays an important role in an individual’s mood and its consequences because of the decisions made. 
+    
+    In this paper, we present an analysis of tweets for the year 2018 in the geographical area of Ireland. At a broader level, we analyze the tweets season-wise to understand the general sentiment in the tweets for each of the four seasons that are experienced in Ireland (winter, spring, summer and autumn). For instance, we compare the emotions in the tweets in summer vs the tweets in winter. Additionally, at a deeper level, we analyze the tweets for each day and correlate it with the weather on that day. In this case, we find the trends in the sentiments on sunny, cloudy, wet, dry or cold days. Furthermore, we also compare these trends on weekdays and weekends. For these analysis, we make use of visualizations to gain more insights into finding patterns between the weather and sentiment of the population within a given geographical region.
 
-    In its preliminary stage, we [need to write what we have done so far].
 
     \section{Related Work}
 
     As the accessibility to real-time information or otherwise is increasing, performing analysis on this data is also becoming viable. There has been a lot of notable research done on sentiment analysis of twitter data in general and studies emphasizing on correlating weather with people’s mood and sentiments from Twitter data by measuring temperature, humidity and atmospheric pressure \footfullcite{park2013mood}. These weather variables seem to have a satisfactory impact on one’s mood. Another paper \footfullcite{bagheri2017sentiment} focuses on implementing sentiment analysis on Twitter data using the Twitter API’s and a wealth of available libraries. Twitter is known for having small texts and abbreviations used by people in their posts or tweets making it challenging to extract polarity of the texts and hence researchers resort to utilizing deep learning and machine learning techniques.
+    
     Researchers have performed sentiment analysis for various reasons and different areas like elections, politics, movie ratings and fashion to name a few. In 2015, there was a noteworthy research done in the vision of predicting future crime on each area of a major city, Chicago, Illinois of the United States using GPS tagged twitter data \footfullcite{chen2015crime}. They aimed to predict the time and location during which a specific type of crime is expected to occur by applying lexicon-based sentiment analysis on categorized weather data combined with kernel density estimation of historical crime incidents and were successful. Hannak et al. \footfullcite{hannak2012tweetin} concentrate on using a Twitter specific sentiment extraction methodology and explore a corpus of over 1.5 billion tweets. With the help of machine learning techniques on Twitter corpus correlated with the weather at a particular time and location of the tweets, it was concluded that aggregate sentiment follows different climate and seasonal patterns.
 
     \section{Methodology}
@@ -73,21 +75,21 @@
             We removed hashtags, retweets, @mentions, hyperlinks and special characters using regular expressions.
             \\ \\
             \textit{for example, \\  }
-            {\textbf{Sample Input: \\} \textit{ "Hello there, This is sample tweet with mentions@john, \#hashtag and link https://google.com"} \\ }
+            {\textbf{Sample Input: \\} \textit{ Hello there, This is sample tweet with mentions@john, \#hashtag and link https://google.com} \\ }
             {\textbf{Processed Output: \\}\textit{  Hello there, This is sample tweet with mentions, hashtag and link \\ } }
         }
         \item{
             Next, we replaced all the contractions in the tweets to its original forms. We used a dictionary of all the contractions with its original form and replaced them in the text.
             \\ \\
             \textit{for example, \\  }
-            {\textbf{Sample Input: \\} \textit{"Hello, how're you doing?"} \\ }
+            {\textbf{Sample Input: \\} \textit{Hello, how're you doing?} \\ }
             {\textbf{Processed Output: \\}\textit{   Hello, how are you doing? \\ } }
         }
         \item{
             Lastly, we translated all the emojis/smileys to texts. For the smileys using special characters, we used the same approach as in the previous step (a dictionary containing the smileys and their corresponding meaning). We utilized the emoji library available in python for this conversion.
             \\ \\
             \textit{for example, \\  }
-            {\textbf{Sample Input: \\} \textit{ "Sample tweet with :-) and 3" } \\ }
+            {\textbf{Sample Input: \\} \textit{ Sample tweet with :-) and <3 } \\ }
             {\textbf{Processed Output: \\}\textit{   Sample tweet with happy smiley and love \\} }
         }\end{itemize}
 
@@ -122,6 +124,11 @@
             Annotation of the tokenized foreast data with some predefined features. For an initial first pass, we defined a na\"{i}ve approach whereby a number of binary features were defined: \textit{wet, dry, cloudy, sunny, cold, warm}. For each feature, a number of tokens were selected to signify if the feature should be 1, and 0 otherwise. For example, the presence of the token \textit{rain} in the forecast signifies a value of 1 for the feature \textit{wet}. These features were then extracted for all of the collected forecast data and serialized to CSV format.
         }
     \end{itemize}
+
+	\subsection{Sentiment Analysis}
+	
+	After preprocessing of the tweet corpus, the same is processed for carrying out the sentiment analysis. Initially, the text corpus is processed using TextBlob, which is a python library built over Natural Language Toolkit(NLTK). TextBlob provides a sufficient set of tools for performing tasks like Sentiment Extraction, Spelling Correction and Detection of Language. There are two types of sentiment analyzers, by default, the TextBlob uses PatternAnalyzer and second is NaiveBayesAnalyzer. The next steps are to evaluate the sentiment score given by the default and overridden implementation of Analyzer. Once the tweets are labelled with its sentiment score, the analysis is done to find correlations between weather data and sentiment score of tweets. The weather data is classified into categories for analysis. 
+
 
     \section{Results}
 

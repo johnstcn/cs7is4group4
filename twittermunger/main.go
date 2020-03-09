@@ -13,6 +13,7 @@ import (
 	"os"
 	"regexp"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/pkg/errors"
@@ -129,7 +130,7 @@ func mustParseDateToTimestamp(s string) int64 {
 	return t.Unix()
 }
 
-func slurpTarFile(fileName string, writer *csv.Writer, opts MungeOpts) error {
+func slurpTarFile(fileName string, ch chan string) error {
 	tarFile, err := os.Open(fileName)
 	if err != nil {
 		fmt.Println(err)
@@ -165,14 +166,7 @@ func slurpTarFile(fileName string, writer *csv.Writer, opts MungeOpts) error {
 			if len(line) == 0 {
 				continue
 			}
-			tweet, err := processLine(line, opts)
-			if err != nil {
-				continue
-			}
-			if tweet.ID == 0 {
-				continue
-			}
-			toCSV(writer, tweet)
+			ch <- line
 		}
 	}
 	return nil
@@ -182,9 +176,11 @@ func main() {
 	var countryCode string
 	var searchExpr string
 	var userLocationExpr string
+	var numWorkers int
 	flag.StringVar(&countryCode, "country", "", "country code")
 	flag.StringVar(&userLocationExpr, "userlocationexpr", ".*", "user location expression")
 	flag.StringVar(&searchExpr, "searchexpr", ".*", "search expression")
+	flag.IntVar(&numWorkers, "numworkers", 1, "max number of concurrent workers")
 	flag.Parse()
 	opts := MungeOpts{
 		CountryCode:      strings.ToUpper(countryCode),
@@ -209,10 +205,52 @@ func main() {
 		return
 	}
 
+	readCh := make(chan string)
+	writeCh := make(chan *Tweet)
+	var readWg sync.WaitGroup
+	var writeWg sync.WaitGroup
+
+	// set up some workers to do actual processing
+	for i := 0; i < numWorkers; i++ {
+		readWg.Add(1)
+		go func() {
+			for line := range readCh {
+				t, err := processLine(line, opts)
+				if err != nil {
+					continue
+				}
+				if t.ID == 0 {
+					continue
+				}
+				writeCh <- t
+			}
+			readWg.Done()
+		}()
+	}
+
+	// set up a single worker to write to stdout
+	writeWg.Add(1)
+	go func() {
+		for t := range writeCh {
+			toCSV(writer, t)
+		}
+		writeWg.Done()
+	}()
+
+	// slurp up that delicious tar file
 	for _, arg := range args {
-		if err := slurpTarFile(arg, writer, opts); err != nil {
+		if err := slurpTarFile(arg, readCh); err != nil {
 			os.Stderr.WriteString(err.Error())
 			os.Exit(1)
 		}
 	}
+
+	// once we're done slurping, close our read channel and wait
+	// for the goroutines to finish
+	close(readCh)
+	readWg.Wait()
+
+	// then close the write channel and wait for the writer to finish
+	close(writeCh)
+	writeWg.Wait()
 }

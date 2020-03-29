@@ -2,10 +2,12 @@
 
 import argparse
 import csv
+import datetime
 import re
 import sys
 
-from lxml import etree
+import lxml.html
+import lxml.etree as etree
 
 class MetMunger(object):
     def __init__(self, writer, fnames):
@@ -34,7 +36,9 @@ class MetMunger(object):
         today_forecast = today_forecast.replace("Tonight", "Tonight ")
         if not (post_date and today_forecast):
             return
-        self.to_csv([post_date, today_forecast])
+
+        parsed_date = datetime.datetime.strptime(post_date.strip(), "%A, %d %B %Y")
+        self.to_csv([parsed_date.strftime("%Y-%m-%d"), "met", today_forecast])
 
     def to_csv(self, row):
         self.writer.writerow(row)
@@ -46,7 +50,7 @@ def main():
     args = parser.parse_args()
 
     writer = csv.writer(sys.stdout, quoting=csv.QUOTE_ALL)
-    writer.writerow(["date", "forecast"])
+    writer.writerow(["date", "source", "forecast"])
     munger = MetMunger(writer, args.input)
     munger.process()
 

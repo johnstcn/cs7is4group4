@@ -2,6 +2,7 @@
 
 import argparse
 import csv
+import datetime
 import re
 import sys
 
@@ -35,7 +36,9 @@ class BoardsMunger(object):
         today_forecast = "".join(today_expr.findall(raw_text)).strip()
         if not (post_date and today_forecast):
             return
-        self.to_csv([post_date, today_forecast])
+
+        parsed_date = datetime.datetime.strptime(post_date, "%d-%M-%Y")
+        self.to_csv([parsed_date.strftime("%Y-%m-%d"), "boards", today_forecast])
 
     def to_csv(self, row):
         self.writer.writerow(row)
@@ -47,7 +50,7 @@ def main():
     args = parser.parse_args()
 
     writer = csv.writer(sys.stdout, quoting=csv.QUOTE_ALL)
-    writer.writerow(["date", "forecast"])
+    writer.writerow(["date", "source", "forecast"])
     munger = BoardsMunger(writer, args.input)
     munger.process()
 

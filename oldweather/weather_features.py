@@ -32,7 +32,8 @@ def hyponyms_and_self(*ssids):
     for ssid in ssids:
         ss = wn.synset(ssid)
         synsets.append(ss)
-        synsets.extend(ss.hyponyms())
+        # all of the hyponyms and not just the direct children
+        synsets.extend(ss.closure(lambda s: s.hyponyms(), depth=9999))
     return set(synsets)
 
 CONCEPTS_COLD = {
@@ -41,10 +42,21 @@ CONCEPTS_COLD = {
     'a': hyponyms_and_self('cold.a.01'),
 }
 
+CONCEPTS_HOT = {
+    'n': hyponyms_and_self('hotness.n.01', 'heat.n.03', 'warmth.n.03'),
+    'v': hyponyms_and_self('heat.v.01', 'heat.v.02', 'heat.v.04', 'warm.v.01', 'warm.v.02'),
+    'a': hyponyms_and_self('warm.a.01', 'hot.a.01'),
+}
+
 CONCEPTS_WET = {
     'n': hyponyms_and_self('wetness.n.01', 'precipitation.n.03'),
     'v': hyponyms_and_self('wet.v.01', 'rain.v.01'),
     'a': hyponyms_and_self('wet.a.01', 'wet.a.02'),
+}
+
+CONCEPTS_DRY = {
+    'v': hyponyms_and_self('dry.v.01', 'dry.v.02'),
+    'a': hyponyms_and_self('dry.a.01'),
 }
 
 forecasts_boards = pd.read_csv(open('../data/boards_mtcranium_forecast_2018.csv'))
@@ -115,7 +127,7 @@ def main():
     with open(args.output, 'w') as f:
         cw = csv.writer(f, csv.QUOTE_ALL)
         header = ['date', 'source', 'forecast']
-        header.extend(['COLD', 'WET'])
+        header.extend(['COLD', 'HOT', 'WET', 'DRY'])
         if args.write_header:
             cw.writerow(header)
 
@@ -128,7 +140,9 @@ def main():
                 blob = textblob.TextBlob(raw_text)
                 row = [raw_date, raw_src, raw_text]
                 row.append("%0.2f" % (synset_similarity(blob, CONCEPTS_COLD)))
+                row.append("%0.2f" % (synset_similarity(blob, CONCEPTS_HOT)))
                 row.append("%0.2f" % (synset_similarity(blob, CONCEPTS_WET)))
+                row.append("%0.2f" % (synset_similarity(blob, CONCEPTS_DRY)))
                 cw.writerow(row)
 
 

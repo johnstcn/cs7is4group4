@@ -37,7 +37,7 @@ class BoardsMunger(object):
         if not (post_date and today_forecast):
             return
 
-        parsed_date = datetime.datetime.strptime(post_date, "%d-%M-%Y")
+        parsed_date = datetime.datetime.strptime(post_date, "%d-%m-%Y")
         self.to_csv([parsed_date.strftime("%Y-%m-%d"), "boards", today_forecast])
 
     def to_csv(self, row):

@@ -77,6 +77,22 @@ CONCEPTS_DRY = hyponyms_and_self(
     'dry.a.01',
 )
 
+CONCEPTS_CLOUDY = hyponyms_and_self(
+    'cloudy.a.02',
+    'overcast.a.01',
+    'overcast.n.01',
+    'overcast.n.02',
+    'cloud.n.01',
+)
+
+CONCEPTS_WINDY = hyponyms_and_self(
+    'gale.n.01',
+    'gust.n.01',
+    'blowy.s.01',
+    'wind.n.01',
+    'blustering.s.01',
+)
+
 STOPWORDS = set(stopwords.words('english'))
 
 def synset_similarity(blob, concept):
@@ -102,7 +118,7 @@ def main():
     with open(args.output, 'w') as f:
         cw = csv.writer(f, csv.QUOTE_ALL)
         header = ['date', 'source', 'forecast']
-        header.extend(['COLD', 'HOT', 'WET', 'DRY'])
+        header.extend(['COLD', 'HOT', 'WET', 'DRY', 'CLOUDY', 'WINDY'])
         if args.write_header:
             cw.writerow(header)
 
@@ -118,6 +134,8 @@ def main():
                 row.append("%0.2f" % (synset_similarity(blob, CONCEPTS_HOT)))
                 row.append("%0.2f" % (synset_similarity(blob, CONCEPTS_WET)))
                 row.append("%0.2f" % (synset_similarity(blob, CONCEPTS_DRY)))
+                row.append("%0.2f" % (synset_similarity(blob, CONCEPTS_CLOUDY)))
+                row.append("%0.2f" % (synset_similarity(blob, CONCEPTS_WINDY)))
                 cw.writerow(row)
 
 

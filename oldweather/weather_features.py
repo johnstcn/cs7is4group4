@@ -59,11 +59,6 @@ CONCEPTS_DRY = {
     'a': hyponyms_and_self('dry.a.01'),
 }
 
-forecasts_boards = pd.read_csv(open('../data/boards_mtcranium_forecast_2018.csv'))
-forecasts_met = pd.read_csv(open('../data/met_forecast_waybackmachine_partial_2018.csv'))
-
-
-
 def penn2wordnet(tag):
     if tag.startswith('N'):
         return 'n'

@@ -9,6 +9,7 @@ import pandas as pd
 
 import nltk
 from nltk.corpus import wordnet as wn
+from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 from nltk.tokenize.treebank import TreebankWordTokenizer
 
@@ -36,79 +37,58 @@ def hyponyms_and_self(*ssids):
         synsets.extend(ss.closure(lambda s: s.hyponyms(), depth=9999))
     return set(synsets)
 
-CONCEPTS_COLD = {
-    'n': hyponyms_and_self('coldness.n.03', 'cold.n.03', 'snow.n.01', 'snow.n.02', 'winter.n.01'),
-    'v': hyponyms_and_self('freeze.v.01', 'freeze.v.02', 'freeze.v.03'),
-    'a': hyponyms_and_self('cold.a.01'),
-}
+CONCEPTS_COLD = hyponyms_and_self(
+    'coldness.n.03',
+    'cold.n.03',
+    'snow.n.01',
+    'snow.n.02',
+    'winter.n.01',
+    'freeze.v.01',
+    'freeze.v.02',
+    'freeze.v.03',
+    'cold.a.01',
+)
 
-CONCEPTS_HOT = {
-    'n': hyponyms_and_self('hotness.n.01', 'heat.n.03', 'warmth.n.03'),
-    'v': hyponyms_and_self('heat.v.01', 'heat.v.02', 'heat.v.04', 'warm.v.01', 'warm.v.02'),
-    'a': hyponyms_and_self('warm.a.01', 'hot.a.01'),
-}
+CONCEPTS_HOT = hyponyms_and_self(
+    'hotness.n.01',
+    'heat.n.03',
+    'warmth.n.03',
+    'heat.v.01',
+    'heat.v.02',
+    'heat.v.04',
+    'warm.v.01',
+    'warm.v.02',
+    'warm.a.01',
+    'hot.a.01',
+)
 
-CONCEPTS_WET = {
-    'n': hyponyms_and_self('wetness.n.01', 'precipitation.n.03'),
-    'v': hyponyms_and_self('wet.v.01', 'rain.v.01'),
-    'a': hyponyms_and_self('wet.a.01', 'wet.a.02'),
-}
+CONCEPTS_WET = hyponyms_and_self(
+    'wetness.n.01', 
+    'precipitation.n.03',
+    'wet.v.01',
+    'rain.v.01',
+    'wet.a.01',
+    'wet.a.02',
+)
 
-CONCEPTS_DRY = {
-    'v': hyponyms_and_self('dry.v.01', 'dry.v.02'),
-    'a': hyponyms_and_self('dry.a.01'),
-}
+CONCEPTS_DRY = hyponyms_and_self(
+    'dry.v.01',
+    'dry.v.02',
+    'dry.a.01',
+)
 
-def penn2wordnet(tag):
-    if tag.startswith('N'):
-        return 'n'
-    
-    if tag.startswith('V'):
-        return 'v'
-    
-    if tag.startswith('J'):
-        return 'a'
-
-    if tag.startswith('R'):
-        return 'r'
-
-    return None
-
+STOPWORDS = set(stopwords.words('english'))
 
 def synset_similarity(blob, concept):
-    sims = {}
-    counts = {}
-    for word, tag in blob.tags:
-        word_sim = 0
-        wn_tag = penn2wordnet(tag)
-        if not wn_tag:
+    total = 0.0
+    for word in blob.words:
+        if word in STOPWORDS:
             continue
-
-        if wn_tag not in counts:
-            counts[wn_tag] = 1
-        else:
-            counts[wn_tag] += 1
-
-        concept_synsets = concept.get(wn_tag, set())
-        match = concept_synsets.intersection(word.synsets)
+        match = concept.intersection(word.synsets)
         if match:
             LOG.debug("matched word: %s synsets: %s" % (word, match))
-            word_sim = 1
-
-        if wn_tag not in sims:
-            sims[wn_tag] = word_sim
-        else:
-            sims[wn_tag] += word_sim
+            total += 1.0
     
-    if not sims:
-        return None
-
-    total = 0.0
-    for key in sims.keys():
-        total += sims[key]
-
-    # XXX: weighting by total number of tokens by POS tag does not seem very useful
-    LOG.debug("counts: %s similarities: %s" % (counts, sims))
     return total
 
 

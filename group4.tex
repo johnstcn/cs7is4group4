@@ -29,14 +29,14 @@
     
     \textbf{RESEARCH QUESTION} - "Can we identify a correlation between Implicit categories of Textual Weather data and Sentiment Analysis of Twitter data for the inhabitants of Ireland?"
     
-    In this paper, we present an analysis of tweets for the year 2018 in the geographical area of Ireland. At a broader level, we analyze the tweets season-wise to understand the general sentiment in the tweets for each of the four seasons that are experienced in Ireland (winter, spring, summer and autumn). For instance, we compare the emotions in the tweets in summer vs the tweets in winter. Additionally, at a deeper level, we analyze the tweets for each day and correlate it with the weather on that day. In this case, we find the trends in the sentiments on sunny, cloudy, wet, dry or cold days. Furthermore, we also compare these trends on weekdays and weekends. For these analysis, we make use of visualizations to gain more insights into finding patterns between the weather and sentiment of the population within a given geographical region.
+    In this paper, we present an analysis of tweets for the year 2018 in the geographical area of Ireland. At a broader level, we analyze the tweets season-wise to understand the general sentiment in the tweets for each of the four seasons that are experienced in Ireland (winter, spring, summer and autumn). For instance, we compare the emotions in the tweets in summer vs the tweets in winter. Additionally, at a deeper level, we analyze the tweets for each day and correlate it with the weather on that day. In this case, we find the trends in the sentiments on sunny, cloudy, wet, dry, cold, cloudy and windy days. Furthermore, we also compare these trends on weekdays and weekends. For these analysis, we make use of visualizations to gain more insights into finding patterns between the weather and sentiment of the population within a given geographical region.
 
 
     \section{Related Work}
 
-    As the accessibility to real-time information or otherwise is increasing, performing analysis on this data is also becoming viable. There has been a lot of notable research done on sentiment analysis of twitter data in general and studies emphasizing on correlating weather with people’s mood and sentiments from Twitter data by measuring temperature, humidity and atmospheric pressure \footfullcite{park2013mood}. These weather variables seem to have a satisfactory impact on one’s mood. Another paper \footfullcite{bagheri2017sentiment} focuses on implementing sentiment analysis on Twitter data using the Twitter API’s and a wealth of available libraries. Twitter is known for having small texts and abbreviations used by people in their posts or tweets making it challenging to extract polarity of the texts and hence researchers resort to utilizing deep learning and machine learning techniques.
+    As the accessibility to real-time information or otherwise is increasing, performing analysis on this data is also becoming viable. As per Kunwoo Park et al., there has been a lot of notable research done on sentiment analysis of twitter data in general and studies emphasizing on correlating weather with people’s mood and sentiments from Twitter data by measuring temperature, humidity and atmospheric pressure \footfullcite{park2013mood}. These weather variables seem to have a satisfactory impact on one’s mood. Bagheri et al. \footfullcite{bagheri2017sentiment} focuses on implementing sentiment analysis on Twitter data using the Twitter API’s and a wealth of available libraries. Twitter is known for having small texts and abbreviations used by people in their posts or tweets making it challenging to extract polarity of the texts and hence researchers resort to utilizing deep learning and machine learning techniques.
     
-    Researchers have performed sentiment analysis for various reasons and different areas like elections, politics, movie ratings and fashion to name a few. In 2015, there was a noteworthy research done in the vision of predicting future crime on each area of a major city, Chicago, Illinois of the United States using GPS tagged twitter data \footfullcite{chen2015crime}. They aimed to predict the time and location during which a specific type of crime is expected to occur by applying lexicon-based sentiment analysis on categorized weather data combined with kernel density estimation of historical crime incidents and were successful. Hannak et al. \footfullcite{hannak2012tweetin} concentrate on using a Twitter specific sentiment extraction methodology and explore a corpus of over 1.5 billion tweets. With the help of machine learning techniques on Twitter corpus correlated with the weather at a particular time and location of the tweets, it was concluded that aggregate sentiment follows different climate and seasonal patterns.
+    Researchers have performed sentiment analysis for various reasons and different areas like elections, politics, movie ratings and fashion to name a few. In 2015, there was a noteworthy research done by Chen et al in the vision of predicting future crime on each area of a major city, Chicago, Illinois of the United States using GPS tagged twitter data \footfullcite{chen2015crime}. They aimed to predict the time and location during which a specific type of crime is expected to occur by applying lexicon-based sentiment analysis on categorized weather data combined with kernel density estimation of historical crime incidents and were successful. Hannak et al. \footfullcite{hannak2012tweetin} concentrate on using a Twitter specific sentiment extraction methodology and explore a corpus of over 1.5 billion tweets. With the help of machine learning techniques on Twitter corpus correlated with the weather at a particular time and location of the tweets, it was concluded that aggregate sentiment follows different climate and seasonal patterns.
 
     \section{Methodology}
 
@@ -74,7 +74,7 @@
 
     \begin{figure}
         \includegraphics[width=0.8\textwidth]{twitter_process_flow.jpeg}
-        \caption{Twitter data process flow.}
+        \caption{Twitter data processing flow.}
         \label{fig:twitter_process_flow}
     \end{figure}
 
@@ -119,7 +119,7 @@
 
     \begin{figure}
         \includegraphics[width=0.8\textwidth]{weather_process_flow.jpeg}
-        \caption{Weather data process flow.}
+        \caption{Weather data processing flow.}
         \label{fig:weather_process_flow}
     \end{figure}
 

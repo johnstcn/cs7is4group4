@@ -46,6 +46,7 @@ CONCEPTS_COLD = hyponyms_and_self(
     'freeze.v.01',
     'freeze.v.02',
     'freeze.v.03',
+    'frosty.s.02',
     'cold.a.01',
 )
 

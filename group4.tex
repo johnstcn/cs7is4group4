@@ -27,7 +27,7 @@
     \begin{abstract}
     \lipsum[1] \todo{Write abstract}
     \\
-    \textbf{\textit{Keywords:}} Twitter, sentiment analysis, python, weather forecast
+    \textbf{\textit{Keywords:}} Twitter, sentiment analysis, python, weather forecast, wordnet
     \end{abstract}
 
     \section{Introduction}
@@ -59,13 +59,15 @@
     \section{Methodology}
     \label{methodology}
 
-    Our hypothesis is that there exists a significant correlation between the overall sentiment of Tweets at a given time, and the features of a given weather forecast for the same specified time on which that Tweet was posted. The null hypothesis is that no significant correlation exists. In order to address the hypothesis, two sources of data were procured: a collection of posts from Twitter, and a collection of textual weather data. Both of these corpora were assembled and filtered such that they both relate to the same geographical area, and to the same timespan. The geographical area in question was restricted to the Republic of Ireland, and the timespan in question was limited to the year of 2018. 
+    Our hypothesis is that there exists a significant correlation between the overall sentiment of Tweets at a given time, and the features of a given textual weather forecast for the same specified time on which that Tweet was posted. The null hypothesis is that no significant correlation exists. In order to address this hypothesis, two sources of data were procured: a collection of posts from Twitter, and a collection of textual weather data. Both of these corpora were assembled and filtered such that they both relate to the same geographical area, and to the same timespan. The geographical area in question was restricted to the Republic of Ireland, and the timespan in question was limited to the year of 2018. 
 
     \subsection{Twitter Data}
 
     \subsubsection{What to measure}
 
     To measure the sentiment of a Tweet, we elected to use the \texttt{TextBlob} \footfullcite{textblob_doc} library, which internally utilises a Naive Bayes classifier pre-trained on a corpus of movie reviews. Applying this classifier to a text yields a tuple of two real-valued integers in the range [-1.0, 1.0], denoting both the \textit{polarity} and the \textit{subjectivity} of the text.
+
+    Textual weather forecasts cannot be correlated directly with Tweet sentiment. In order to perform some meaningful analysis, we defined a number of weather-related categories of interest and determined how strongly a given weather forecast applied one of those categories. The categories chosen were cold, hot, wet, dry, cloudy, and windy. For example, the forecast ``Some sunny spells giving way to scattered showers later on'' relates both to \texttt{SUNNY} and \texttt{WET} categories.
 
     \subsubsection{Data Collection}
 
@@ -126,7 +128,7 @@
 
     \subsubsection{What to measure}
 
-    For the purposes of this hypothesis, given a textual weather forecast and a finite set of potential features of weather forecasts, we map each textual forecast to a subset of those potential features. The features of each individual forecast text are determined by the presence or absence of a set of manually selected tokens.
+    For the purposes of this hypothesis, given a textual weather forecast and a finite set of potential features of weather forecasts, we map each textual forecast to a subset of those potential features. As stated previously, the features chosen were cold, hot, wet, dry, cloudy, and windy. To perform the mapping, we count the occurrences of concepts relating to each of those features in the text using \texttt{textblob} and WordNet \footfullcite{fellbaum2012wordnet}.
 
     \subsubsection{Data Collection}
 

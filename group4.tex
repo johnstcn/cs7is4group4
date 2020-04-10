@@ -147,14 +147,14 @@
 
     \subsubsection{Data Processing}
 
-    The textual forecast data on its own needs to be processed before any meaningful correlations can take place. To this end, we utilised the Python NLTK libraries to perform the following:
+    The textual forecast data on its own needs to be processed before any meaningful correlations can take place. To this end, we utilised the \texttt{TextBlob} library to perform the following:
     \begin{itemize}
         \item{
-            Stemming and tokenization of the raw text. NLTK provides pre-implemented stemmers and tokenizers for the English language. For stemming we utilised a \texttt{PorterStemmer} \footfullcite{nltk_doc_stem_porter}, and for tokenization, a \texttt{TreebankWordTokenizer} \footfullcite{nltk_doc_tokenize_treebank}. \\
-            For example, the raw string \texttt{``TODAY ... Continued mild with a few outbreaks of light rain, highs near 12 C.''}, after stemming and tokenization, becomes a list of tokens \texttt{[ `today', `...', `continu', `mild', `with', `a', `few', `outbreak', `of', `light', `rain', `,' ,`high', `near', `12', `c', `.' ]}.
+            Stemming and tokenization of the raw text. TextBlob leverages NLTK's pre-implemented stemmers and tokenizers for the English language, and also uses NLTK's WordNet integration to provide the senses of each individual word in a sentence.
         }
         \item{
-            Annotation of the tokenized forecast data with some predefined features. For an initial first pass, we defined a na\"{i}ve approach whereby a number of binary features were defined: \textit{wet, dry, cloudy, sunny, cold, warm}. For each feature, a number of tokens were selected to signify if the feature should be 1, and 0 otherwise. For example, the presence of the token \textit{rain} in the forecast signifies a value of 1 for the feature \textit{wet}. These features were then extracted for all of the collected forecast data and serialized to CSV format.
+            Annotation of the tokenized forecast data with some predefined features. We first define a number of top-level concepts: \textit{cold}, \textit{hot}, \textit{wet}, \textit{dry}, \textit{cloudy}, and \textit{windy}. For each of these concepts, we define a set of related \textit{senses} to this concept. We take the sense itself, and all of its children, or \textit{hyponyms}. Then, we compute the intersection of both the set of senses for a given word in the sentence as provided by \texttt{TextBlob}, and the set of senses for the given concept. We then count the number of such overlaps as the measure of the relatedness of the given text to the given concept. \\
+            For example, given the sentence ``Very cold and frosty tonight'', we can extract the senses \texttt{cold.a.01} and \texttt{frosty.s.02}, and count two instances of sense overlaps with the concept of \textit{cold}. These features were then extracted for all of the collected forecast data and serialized to CSV format.
         }
     \end{itemize}
 

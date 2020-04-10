@@ -4,6 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[backend=biber,autocite=footnote,notetype=foot+end,style=authortitle-ibid]{biblatex}
 \usepackage[colorinlistoftodos]{todonotes}
+\usepackage{lipsum}
 \bibliography{group4}
 
 \begin{document}
@@ -22,6 +23,11 @@
     }
 
     \maketitle
+
+    \begin{abstract}
+    \lipsum[1] \todo{write abstract}
+    \end{abstract}
+
     \section{Introduction}
 
     Sentiment analysis is a critical and essential area because sentiment fundamentally relates to a person’s emotions, impressions, and attitude. Analysing every individual’s sentiment from a text analytics point of view accurately is challenging. It involves trying to comprehend the thoughts and assumptions of an individual with regard to a concept or topic in a particular context, be it positive, negative or neutral \footfullcite{aylien_sentiment}. It is estimated that nearly 2.5 quintillion bytes of data is generated each day \footfullcite{blazon_howmuchdata}, and there is a plethora of information available online relating to a person’s messages, tweets, documents, emails, chats, conversations, and comments. Sentiment analysis allows us to analyse this huge amount of data efficiently.

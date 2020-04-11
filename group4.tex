@@ -94,7 +94,7 @@
     The filtering process removes the URLs, usernames, and hashtags. In some situations, it is known that hashtags can provide instant insight as to what the users are feeling. However, most hashtags that we encountered contain meaningless text or sentences for tags instead of keywords. The process flow is illustrated in Figure \ref{fig:twitter_process_flow}.
 
     \begin{figure}
-        \includegraphics[width=0.8\textwidth]{twitter_process_flow.jpeg}
+        \includegraphics[width=0.8\textwidth]{twitter_process_flow.jpg}
         \caption{Twitter data processing flow.}
         \label{fig:twitter_process_flow}
     \end{figure}
@@ -102,24 +102,13 @@
     \begin{itemize}
         \item{
             We removed hashtags, retweets, @mentions, hyperlinks and special characters using regular expressions.
-            \\ \\
-            \textit{for example, \\  }
-            {\textbf{Sample Input: \\} \textit{ Hello there, This is sample tweet with mentions@john, \#hashtag and link https://google.com} \\ }
-            {\textbf{Processed Output: \\}\textit{  Hello there, This is sample tweet with mentions, hashtag and link \\ } }
-        }
+                    }
         \item{
             Next, we replaced all the contractions in the tweets to its original forms. We used a dictionary of all the contractions with its original form and replaced them in the text.
-            \\ \\
-            \textit{for example, \\  }
-            {\textbf{Sample Input: \\} \textit{Hello, how're you doing?} \\ }
-            {\textbf{Processed Output: \\}\textit{   Hello, how are you doing? \\ } }
+            
         }
         \item{
             Lastly, we translated all the emojis/smileys to texts. For the smileys using special characters, we used the same approach as in the previous step (a dictionary containing the smileys and their corresponding meaning). We utilized the emoji library available in python for this conversion.
-            \\ \\
-            \textit{for example, \\  }
-            {\textbf{Sample Input: \\} \textit{ Sample tweet with :-) and \textless3 } \\ }
-            {\textbf{Processed Output: \\}\textit{   Sample tweet with happy smiley and love \\} }
         }\end{itemize}
 
 
@@ -160,25 +149,31 @@
 
 	\subsection{Sentiment Analysis}
 	
-	After preprocessing of the tweet corpus, the same is processed for carrying out the sentiment analysis. Initially, the text corpus is processed using TextBlob, which is a python library built over Natural Language Toolkit(NLTK). TextBlob provides a sufficient set of tools for performing tasks like Sentiment Extraction, Spelling Correction and Detection of Language. There are two types of sentiment analyzers, by default, the TextBlob uses PatternAnalyzer and second is NaiveBayesAnalyzer. The next steps are to evaluate the sentiment score given by the default and overridden implementation of Analyzer. Once the tweets are labelled with its sentiment score, the analysis is done to find correlations between weather data and sentiment score of tweets. The weather data is classified into categories for analysis. 
+	After preprocessing of the tweet corpus, the same is processed for carrying out the sentiment analysis. Initially, the text corpus is processed using TextBlob, which is a python library built over Natural Language Toolkit(NLTK). TextBlob provides a sufficient set of tools for performing tasks like Sentiment Extraction, Spelling Correction and Detection of Language. There are two types of sentiment analyzers, by default, the TextBlob uses PatternAnalyzer and second is NaiveBayesAnalyzer. The next steps are to evaluate the sentiment score given by the default and overridden implementation of Analyzer. 
 
 
     \section{Results}
     \label{results}
-    
-    The findings of our initial analysis of sentiment in Twitter data were that more tweets showed positive sentiment than negative sentiment. This was observed in the case of the tweets analyzed for the month of January in 2018 for the tweets from Ireland. The box-plot showcasing this shown in the Figure \ref{fig:box_plot_jan_2018}. The sentiment takes the values range from [-1, 1], where -1 is a completely negative sentiment, +1 is a completely positive sentiment and 0 means neutral sentiment.
-    
-    \begin{figure}
-    	\includegraphics[width=0.8\textwidth]{boxplot_Jan2018.png}
-    	\caption{Box plot for the sentiment analysis of the tweets for the month of January 2018.}
-    	\label{fig:box_plot_jan_2018}
+    The weather forecast data collected is classified into categories of cold, hot, dry and wet for analysis. And, then the tweets labelled with their respective sentiment scores are analysed together with weather forecast data to check for correlation, i.e, positive or negative affects of weather forecasts on tweets. Figure \ref{fig:analysis_sentiment_weather} It was found that tweets showed a slightly more positive sentiment of 14.4 percent in hot weather conditions when compared 13.9 percent in cold weather conditions. Also, it was noted that 41.1 percent of the total tweets had negative sentiment in them during cold weather conditions when compared to 39.2 percent  negative sentiment in tweets during wet weather conditions. So, it can be safe to conclude that tweets exhibit more negative sentiment during cold weather conditions or when forecasted weather is of the category 'cold'.
+
+   \begin{figure}
+        \includegraphics[width=0.8\textwidth]{analysis_sentiment_weather.jpg}
+        \caption{Sentiment Analysis of Tweets based on Weather Forecasts}
+        \label{fig:analysis_sentiment_weather}
     \end{figure}
+    The tweets during weekdays and weekends were also analysed to check for differences. No significant differences were found between sentiment of tweets posted during weekdays and sentiment of tweets posted during weekends. The results of the analysis is presented in Figure \ref{fig:sentiment_weekdays_weekends}. The box-plot showcasing the sentiment in the tweets takes values that are in the range [-1, 1], where -1 is a completely negative sentiment, +1 is a completely positive sentiment and 0 means neutral sentiment.
+    \begin{figure}
+        \includegraphics[width=1\textwidth]{sentiment_analysis_weekdays_weekends.jpg}
+        \caption{Sentiment Analysis of Tweets on Weekdays and Weekends}
+        \label{fig:sentiment_weekdays_weekends}
+    \end{figure} 
+   
 
     \section{Conclusions and Future Work}
     \label{conclusion}
-     Large amounts of data is readily available on Twitter which can be used to analyze sentiment of the users' tweets. Also, historical and real time weather data is made available by the meteorological department. We could use weather data and analyze it together with the tweets to predict sentiment for a particular weather forecast using Machine Learning algorithms. Studies have shown that weather conditions such as temperature, precipitation, cloud cover, wind speed and humidity each significantly relate to the expression of sentiment in social media such as Twitter and Facebook. Analysis of sentiment correlated with weather data gives us some important background information of the users of the system, which could be very useful in decision making.
+     Large amounts of data is readily available on Twitter which can be used to analyze sentiment of users' tweets. Also, historical and real time weather data is made available by the meteorological department. We could use weather data and analyze it together with the tweets to predict sentiment for a particular weather forecast using Machine Learning algorithms. Studies have shown that weather conditions such as temperature, precipitation, cloud cover, wind speed and humidity each significantly relate to the expression of sentiment in social media such as Twitter and Facebook. Analysis of sentiment correlated with weather data gives us some important background information of the users of the system, which could be very useful in decision making.
 
-     Our future work would involve collecting Twitter data posted during different seasons of the year. More specifically, when the weather data collected is disparate. This data would help us in gauging the effects of weather on Twitter posts.  For example, an increase in temperature from lower values to values between 15C and 20C are associated with significant increases in positive expressions. On the contrary, the number of expressions of positive sentiment decline when the temperature exceeds a value of 30C. 
+     Our future work would involve collecting Twitter data posted during different seasons of the year and correlating them with actual weather data rather than weather forecasts. More specifically, when the weather data collected is disparate. This data would help us in gauging the effects of weather on Twitter posts.  For example, an increase in temperature from lower values to values between 15C and 20C are associated with significant increases in positive expressions. On the contrary, the number of expressions of positive sentiment decline when the temperature exceeds a value of 30C. There is also a scope for including other countries where the weather is more stable so that data can be checked for correlation more efficiently.
 
     \printbibliography
 

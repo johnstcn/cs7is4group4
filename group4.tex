@@ -154,7 +154,32 @@
 
     \section{Results}
     \label{results}
+
     The weather forecast data collected is classified into categories of cold, hot, dry, wet, windy and cloudy for analysis. And, then the tweets labelled with their respective sentiment scores are analysed together with weather forecast data to check for correlation, i.e, positive or negative affects of weather forecasts on tweets. Figure \ref{fig:analysis_sentiment_weather} It was found that tweets showed a slightly more positive sentiment of 14.4 percent in hot weather conditions when compared 13.9 percent in cold weather conditions. Also, it was noted that 41.1 percent of the total tweets had negative sentiment in them during cold weather conditions when compared to 39.2 percent  negative sentiment in tweets during wet weather conditions. So, it can be safe to conclude that tweets exhibit more negative sentiment during cold weather conditions or when forecasted weather is of the category 'cold'.
+
+    \begin{figure}
+        \begin{tabular}{ l | r  r  r  r  r  r  r  r }
+            \hline
+            & \textbf{$\mu$} & \textbf{50\%} & \textbf{25\%} & \textbf{75\%} & \textbf{$\sigma$} & \textbf{Min.} & \textbf{Max.} \\
+            \hline
+            & \multicolumn{7}{}{} \\
+            & \multicolumn{7}{|l}{\textbf{Tweet Sentiment}} \\
+            \hline
+            \textit{polarity} & 0.115 & 0.000 & 0.000 & 0.250 & 0.303 & -1.000 & 1.000 \\
+            \textit{subjectivity} & 0.324 & 0.267 & 0.000 & 0.600 & 0.337 & 0.000 & 1.000 \\
+            \hline
+            & \multicolumn{7}{}{} \\
+            & \multicolumn{7}{l}{\textbf{Counts of Weather Senses}} \\
+            \hline
+            \textit{cold} & 0.854 & 0.000 & 0.000 & 1.000 & 1.576 & 0.000 & 11.000\\
+            \textit{hot} & 0.169 & 0.000 & 0.000 & 0.000 & 0.442 & 0.000 & 3.000\\
+            \textit{wet} & 2.316 & 2.000 & 1.000 & 3.000 & 2.127 & 0.000 & 11.000\\
+            \textit{dry} & 0.185 & 0.000 & 0.000 & 1.000 & 0.433 & 0.000 & 3.000\\
+            \textit{cloudy} & 0.910 & 1.000 & 0.000 & 0.000 & 0.951 & 0.000 & 5.000\\
+            \textit{windy} & 1.716 & 1.000 & 0.000 & 2.000 & 1.839 & 0.000 & 14.000\\
+        \end{tabular}
+        \caption{Descriptive statistics of results.}
+    \end{figure}
 
    \begin{figure}
         \includegraphics[width=0.8\textwidth]{analysis_sentiment_weather.jpg}

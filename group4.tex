@@ -159,7 +159,6 @@
 
     \begin{figure}
         \begin{tabular}{ l | r  r  r  r  r  r  r  r }
-            \hline
             & \textbf{$\mu$} & \textbf{50\%} & \textbf{25\%} & \textbf{75\%} & \textbf{$\sigma$} & \textbf{Min.} & \textbf{Max.} \\
             \hline
             & \multicolumn{7}{}{} \\
@@ -179,6 +178,21 @@
             \textit{windy} & 1.716 & 1.000 & 0.000 & 2.000 & 1.839 & 0.000 & 14.000\\
         \end{tabular}
         \caption{Descriptive statistics of results.}
+    \end{figure}
+
+    \begin{figure}
+        \begin{tabular}{l | r r r }
+        \hline
+        & \textbf{$N > 0$} & \textbf{Spearman $\rho$} & \textbf{p} \\
+        \hline
+        \textit{cold} & 9,697 & 0.010 & 0.109 \\
+        \textit{hot} & 3,606 & -0.001 & 0.869 \\
+        \textit{wet} & 21,877 & -0.005 & 0.406 \\
+        \textit{dry} & 4,290 & 0.003 & 0.686 \\
+        \textit{cloudy} & 15,976 & 0.012 & 0.043 \\
+        \textit{windy} & 18,456 & -0.008 & 0.221 \\
+        \end{tabular}
+        \caption{Spearman-Rho Correlation of Tweet polarity and weather senses.}
     \end{figure}
 
    \begin{figure}

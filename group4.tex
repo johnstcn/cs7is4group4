@@ -81,7 +81,7 @@
 
     \subsubsection{Data Cleaning}
 
-    The tweets are 140 characters long. Considering this constraint, initial analysis from the chunk of tweets revealed that, users tend to use more contractions and emojis to express their thoughts rather than using appropriate grammar. The sentiment score given by the existing implementations like TextBlob is affected by the use of such text. We implemented a python code to do the preprocessing of the data obtained, which is obtained using Twitter API.
+    Tweets can be up to 280 characters long. Considering this constraint, initial analysis from the chunk of tweets revealed that, users tend to use more contractions and emojis to express their thoughts rather than using appropriate grammar. The sentiment score given by the existing implementations like TextBlob is affected by the use of such text. We implemented a python code to do the preprocessing of the data obtained, which is obtained using Twitter API.
 
     The filtering process removes the URLs, usernames, and hashtags. In some situations, it is known that hashtags can provide instant insight as to what the users are feeling. However, most hashtags that we encountered contain meaningless text or sentences for tags instead of keywords.
     % The process flow is illustrated in Figure \ref{fig:twitter_process_flow}.

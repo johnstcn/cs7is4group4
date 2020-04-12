@@ -40,16 +40,9 @@
     
     At a high level, we analyze the Tweets season-wise to understand the general sentiment in the tweets for each of the four seasons that are experienced in Ireland (Spring, Summer, Autumn and Winter). For instance, we compare the Twitter sentiment during the summer months and those in winter. Additionally, at a deeper level, we analyze the tweets for each day and correlate it with the weather on that day. In this case, we find the trends in the sentiments on sunny, cloudy, wet, dry, cold, cloudy and windy days. Furthermore, we also compare these trends on weekdays and weekends. For these analyses, we make use of visualizations to gain more insights into correlations between the weather categories and sentiments.
 
-    The remainder of this paper is laid out as follows:
-    \begin{itemize}
-        \item{In Section \ref{related_work}, we outline some related work already peformed in this field.}
-        \item{In Section \ref{methodology}, we describe the processes of obtaining and analyzing the data.}
-        \item{In Section \ref{results}, we give an overview of the results of our analyses.}
-        \item{Finally, Section \ref{conclusion} provides a summary and evaluation of our findings.}
-    \end{itemize}
-
-
-    \section{Related Work}
+The rest of the paper organized as follows: Section 2 outlines some related work already peformed in this field, Section 3 describes the processes of obtaining and analyzing the data, Section 4 provides an overview of the results and Section 5 mentions the conclusions and acknowledges future work
+   
+   \section{Related Work}
     \label{related_work}
 
     As accessibility to real-time information increases, performing analysis on this kind of data becomes more viable. There has been a lot of notable research done on sentiment analysis of Twitter data in general. Park et al. find a correlation between weather and people’s mood and sentiments from Twitter data by measuring temperature, humidity and atmospheric pressure \footfullcite{park2013mood}. These weather variables seem to have a satisfactory impact on one’s mood. Bagheri et al. \footfullcite{bagheri2017sentiment} focuses on implementing sentiment analysis on Twitter data using the Twitter APIs and a wealth of available libraries. Tweets are well-known for including abbreviations and colloquialisms, making it challenging to extract polarities from these texts. Deep Learning image classifier could be utilised to predict the sentiment of an image as positive (e.g. a colourful balloons) or negative (e.g. a missile). According to Dang, N.C et al. latest studies have employed deep learning to solve sentiment analysis problems, such as sentiment polarity \cite{dang2020sentiment}.
@@ -208,11 +201,9 @@
     
     It was noted that a strong positive correlation of $0.35$ existed between the numbers of occurrences of the \textit{cold} features and \textit{wet} features in the forecast data ($p<0.01$). This is hardly a surprising result, but serves as a sanity check of our methodology thus far.
 
-    Additionally, a minor positive correlation was noted between sentiment polarity and occurrences of \textit{cloudy} senses, but the significance of this relationship does not seem high enough to warrant further investigation. Other relationships are not statistically significant.
-
     \section{Conclusions and Future Work}
     \label{conclusion}
-     Large amounts of data is readily available on Twitter which can be used to analyze sentiment of users' tweets. Also, historical and real time weather data is made available by the meteorological department. We could use weather data and analyze it together with the tweets to predict sentiment for a particular weather forecast using Machine Learning algorithms. Studies have shown that weather conditions such as temperature, precipitation, cloud cover, wind speed and humidity each significantly relate to the expression of sentiment in social media such as Twitter and Facebook. Analysis of sentiment correlated with weather data gives us some important background information of the users of the system, which could be very useful in decision making.
+     In this paper, we investigated the possible correlation between weather forecast and sentiment of Tweets. On analysis, it was observed that there was a minor positive correlation between sentiment polarity and occurrences of \textit{cloudy} senses, but the significance of this relationship does not seem high enough to warrant further investigation. Other relationships are not statistically significant. Other studies have shown that weather conditions such as temperature, precipitation, cloud cover, wind speed and humidity each significantly relate to the expression of sentiment in social media such as Twitter and Facebook. However, based on our findings, weather forecast data necessarily does not have significance on the sentiments of Tweets primarily because the forecast data is not always correct or accurate.
 
      Possible future prospects might involve collecting Twitter data posted during different seasons of the year and correlating them with actual weather data rather than weather forecasts. More specifically, when the weather data collected is disparate. This data would help us in gauging the effects of weather on Twitter posts.  For example, an increase in temperature from lower values to values between 15C and 20C are associated with significant increases in positive expressions. On the contrary, the number of expressions of positive sentiment decline when the temperature exceeds a value of 30C. There is beneficial scope for performing similar analysis on countries where the weather is more stable so that data can be checked for correlation more efficiently.
 

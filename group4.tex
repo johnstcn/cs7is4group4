@@ -155,7 +155,25 @@
     \section{Results}
     \label{results}
 
-    The weather forecast data collected is classified into categories of cold, hot, dry, wet, windy and cloudy for analysis. And, then the tweets labelled with their respective sentiment scores are analysed together with weather forecast data to check for correlation, i.e, positive or negative affects of weather forecasts on tweets. Figure \ref{fig:analysis_sentiment_weather} It was found that tweets showed a slightly more positive sentiment of 14.4 percent in hot weather conditions when compared 13.9 percent in cold weather conditions. Also, it was noted that 41.1 percent of the total tweets had negative sentiment in them during cold weather conditions when compared to 39.2 percent  negative sentiment in tweets during wet weather conditions. So, it can be safe to conclude that tweets exhibit more negative sentiment during cold weather conditions or when forecasted weather is of the category 'cold'.
+    The weather forecast data collected is annotated with the features \textit{cold}, \textit{hot}, \textit{wet}, \textit{dry}, \textit{cloudy}, and \textit{windy}. The Tweets, annotated with their respective sentiment polarity and subjectivity scores, are joined together with the annotated weather forecast data by their respective posting or publication dates.
+    
+    Firstly, a high-level overiew of the data was prepared by classifying the Tweet polarity into \textit{positive}, \textit{neutral}, or \textit{negative} categories. The weather forecasts corresponding to the Tweets were additionally categorised into the most frequent category of words occurring in the forecast. This is shown in Figure \ref{fig:analysis_sentiment_weather}. It is evident that the overall proportions of Tweet sentiments remain the same, with the vast majority of Tweets being neutral in sentiment, and only a small proportion having positive sentiment. It was also found that Tweets showed a slightly more positive sentiment of 14.4 percent in hot weather conditions when compared 13.9 percent in cold weather conditions. Also, it was noted that 41.1 percent of the total Tweets had negative sentiment in them during cold weather conditions when compared to 39.2 percent negative sentiment in tweets during wet weather conditions. 
+
+    \begin{figure}
+        \includegraphics[width=0.8\textwidth]{analysis_sentiment_weather.jpg}
+        \caption{Sentiment Analysis of Tweets based on Weather Forecasts}
+        \label{fig:analysis_sentiment_weather}
+    \end{figure}
+    
+    The Tweets during weekdays and weekends were also analysed to check for differences. No significant differences were found between sentiment of Tweets posted during weekdays and sentiment of tweets posted during weekends. The results of the analysis is presented in Figure \ref{fig:sentiment_weekdays_weekends}. The box-plot showcasing the sentiment in Tweets takes values that are in the range $[-1, 1]$, where -1 is a completely negative sentiment, +1 is a completely positive sentiment and 0 means neutral sentiment.
+
+    \begin{figure}
+        \includegraphics[width=1\textwidth]{sentiment_analysis_weekdays_weekends.jpg}
+        \caption{Sentiment Analysis of Tweets on Weekdays and Weekends}
+        \label{fig:sentiment_weekdays_weekends}
+    \end{figure} 
+    
+    Finally, Spearman-Rho correlations were calculated for each of the weather features. The numerical results are summarised in Figure \ref{fig:stats1} and Figure \ref{fig:stats2}.
 
     \begin{figure}
         \begin{tabular}{ l | r  r  r  r  r  r  r  r }
@@ -178,12 +196,13 @@
             \textit{windy} & 1.716 & 1.000 & 0.000 & 2.000 & 1.839 & 0.000 & 14.000\\
         \end{tabular}
         \caption{Descriptive statistics of results.}
+        \label{fig:stats1}
     \end{figure}
 
     \begin{figure}
         \begin{tabular}{l | r r r }
         \hline
-        & \textbf{$N > 0$} & \textbf{Spearman $\rho$} & \textbf{p} \\
+        \textbf{Feature} & \textbf{$N > 0$} & \textbf{Spearman-$\rho$} & \textbf{p-value} \\
         \hline
         \textit{cold} & 9,697 & 0.010 & 0.109 \\
         \textit{hot} & 3,606 & -0.001 & 0.869 \\
@@ -193,20 +212,12 @@
         \textit{windy} & 18,456 & -0.008 & 0.221 \\
         \end{tabular}
         \caption{Spearman-Rho Correlation of Tweet polarity and weather senses.}
+        \label{fig:stats2}
     \end{figure}
+    
+    It was noted that a strong positive correlation of $0.35$ existed between the numbers of occurrences of the \textit{cold} features and \textit{wet} features in the forecast data ($p<0.01$). This is hardly a surprising result, but serves as a sanity check of our methodology thus far.
 
-   \begin{figure}
-        \includegraphics[width=0.8\textwidth]{analysis_sentiment_weather.jpg}
-        \caption{Sentiment Analysis of Tweets based on Weather Forecasts}
-        \label{fig:analysis_sentiment_weather}
-    \end{figure}
-    The tweets during weekdays and weekends were also analysed to check for differences. No significant differences were found between sentiment of tweets posted during weekdays and sentiment of tweets posted during weekends. The results of the analysis is presented in Figure \ref{fig:sentiment_weekdays_weekends}. The box-plot showcasing the sentiment in the tweets takes values that are in the range [-1, 1], where -1 is a completely negative sentiment, +1 is a completely positive sentiment and 0 means neutral sentiment.
-    \begin{figure}
-        \includegraphics[width=1\textwidth]{sentiment_analysis_weekdays_weekends.jpg}
-        \caption{Sentiment Analysis of Tweets on Weekdays and Weekends}
-        \label{fig:sentiment_weekdays_weekends}
-    \end{figure} 
-   
+    Additionally, a minor positive correlation was noted between sentiment polarity and occurrences of \textit{cloudy} senses, but the significance of this relationship does not seem high enough to warrant further investigation. Other relationships are not statistically significant.
 
     \section{Conclusions and Future Work}
     \label{conclusion}

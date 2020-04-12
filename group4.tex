@@ -75,15 +75,7 @@
 
     \subsubsection{Data Processing}
 
-    The large archives detailed above needed to be preprocessed before any meaningful analysis can be performed. To this end, a small program was written to consume the entire TAR archive and filter out Tweets matching certain criteria, serializing a subset of the data to CSV format. This was done to avoid extracting the entire archive to disk, which is a time-consuming operation. The following criteria were used for extracting Tweets of interest:
-    \begin{itemize}
-        \item{
-            Having geo-location information within Ireland, or
-        }
-        \item{
-            Posted by a user with user-specified location containing the string \textit{Ireland}.
-        }
-    \end{itemize}
+    The large archives detailed above needed to be preprocessed before any meaningful analysis can be performed. To this end, a small program was written to consume the entire TAR archive and filter out Tweets matching certain criteria, serializing a subset of the data to CSV format. This was done to avoid extracting the entire archive to disk, which is a time-consuming operation. Tweets were selected that had both geo-location information inside the Republic of Ireland, and were posted by a user with user-specified location containing the string \textit{Ireland}.
 
     Note that not all Tweets posted by users in Ireland will necessarily have geo-location information attached, and not all Tweets posted by users claiming to be located within Ireland are necessarily so.
 

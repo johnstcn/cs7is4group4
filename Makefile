@@ -1,4 +1,4 @@
-all : clean group4.pdf contribution_group4.pdf merged_group4.pdf
+all : clean group4.pdf #contribution_group4.pdf merged_group4.pdf
 
 clean :
 	rm -f *.pdf *.qry *.log *.blg *.bbl *.aux *.bcf *-blx.bib *.run.xml

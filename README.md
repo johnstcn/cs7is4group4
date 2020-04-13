@@ -36,14 +36,15 @@ The Jupyter notebook can be uploaded to [Google Colaboratory](https://colab.rese
 ### Weather Mungers
 In the case of the Python scripts, or if you wish to run the Jupyter notebook locally, you need a Python 3 environment. If you don't have one set up, see [the Python website](https://python.org) for more information on doing so. 
 
-Each of the Python scripts accepts a `--help` command-line argument which will provide documentation on the required arguments of the script. Both 
-
-Example: to extract the Boards.ie forecast data from `118.html` and save it to `boards118.csv`:
+Each of the Python scripts accepts a `--help` command-line argument which will provide documentation on the required arguments of the script. Both `munge_boards.py` and `munge_met.py` accept the same kinds of arguments.  Example: to extract the Boards.ie forecast data from `118.html` and save it to `boards118.csv`:
 ```
 ./munge_boards.py boards_mtcranium/118.html | tee boards118.csv
 ```
 
-The 
+The semantic feature extraction script `weather_features.py` accepts a number of input files at once, and one output file. Example usage: 
+```
+weather_features.py boards_mtcranium.csv met.csv weather_with_features.csv
+```
 
 ### Twitter Munger
 

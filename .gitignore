@@ -15,4 +15,4 @@
 *.run.xml
 .DS_Store
 oldweather/.DS_Store
-signatures/.DS_Store
+signatures/.DS_Store*.dvi
